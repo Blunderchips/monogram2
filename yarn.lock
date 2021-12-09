@@ -128,7 +128,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/cdk@13.1.0":
+"@angular/cdk@^13.1.0":
   version "13.1.0"
   resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-13.1.0.tgz#e594a3131d8334112a42447ec30e862b8d410323"
   integrity sha512-OOMDmXnCpodYMEbRro8FUcXqQ8UN3lU/OXnuuDhHOJIrb7loizSGKkJdaVLZtM9ygH7qbOxRhkC2efjmtIn48g==
@@ -197,6 +197,13 @@
   version "13.0.3"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-13.0.3.tgz#6f789e666559a20cad3bc96251967e275b6ff15d"
   integrity sha512-w8FngZBPrLw9kHftYy824C/wSBtLKCWvGU04qI6V9BCpxedf7cyOIhOzaL+4Pz/rwgvo+0Qn2uM1ssZ2+JUdvQ==
+  dependencies:
+    tslib "^2.3.0"
+
+"@angular/flex-layout@^13.0.0-beta.36":
+  version "13.0.0-beta.36"
+  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-13.0.0-beta.36.tgz#0e91e6837b767841b579f8a5be66667255e30484"
+  integrity sha512-JLC3C1oEKVu9lLyottvHbfyCf/pOPzjXfFO3qOPBbWyVqxuQkfkd2NILZZh4DHsKYbBxIZ01vnfQHCV8NdaZ3w==
   dependencies:
     tslib "^2.3.0"
 

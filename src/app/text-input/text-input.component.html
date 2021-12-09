@@ -1,0 +1,18 @@
+<form [formGroup]="inputForm" fxLayout="column" fxLayoutAlign="space-around center" ngxsForm="textInput">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Textarea</mat-label>
+    <textarea formControlName="textInput" matInput placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field>
+
+  <span fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-stroked-button>
+      Submit
+    </button>
+
+    <button mat-stroked-button>
+      Reset
+    </button>
+  </span>
+
+</form>
