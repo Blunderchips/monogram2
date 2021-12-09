@@ -1,1 +1,15 @@
-<app-text-input></app-text-input>
+<div fxFill fxLayout="column" fxLayoutAlign="space-between center">
+
+  <app-text-input></app-text-input>
+
+  <div class="app-component__footer">
+    <mat-divider></mat-divider>
+    <nav mat-align-tabs="center" mat-stretch-tabs mat-tab-nav-bar>
+      <a [routerLink]="['home']" mat-tab-link>Home</a>
+      <a [routerLink]="['123','document']" mat-tab-link>Document</a>
+      <a [routerLink]="['123','settings']" mat-tab-link>Settings</a>
+      <a [routerLink]="['new']" mat-tab-link>New</a>
+    </nav>
+  </div>
+
+</div>
