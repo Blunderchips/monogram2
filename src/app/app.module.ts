@@ -19,11 +19,19 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TextInputComponent } from './text-input/text-input.component';
+import { HomeComponent } from './home/home.component';
+import { SettingsComponent } from './settings/settings.component';
+import { DocumentComponent } from './document/document.component';
+import { NewDocumentComponent } from './new-document/new-document.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TextInputComponent,
+    HomeComponent,
+    SettingsComponent,
+    DocumentComponent,
+    NewDocumentComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +49,6 @@ import { TextInputComponent } from './text-input/text-input.component';
     MatInputModule,
     MatCardModule,
     MatProgressBarModule,
-    MatDividerModule,
     MatTabsModule,
   ],
   providers: [],
