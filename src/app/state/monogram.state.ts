@@ -1,14 +1,35 @@
 import { Injectable } from '@angular/core';
-import { State, StateToken } from '@ngxs/store';
+import { Action, Selector, State, StateContext, StateToken } from '@ngxs/store';
+import { SaveNewForm } from './monogram.actions';
+import { defaultForm, MonogramStateModel } from './monogram.model';
 
-export type TextInputFormStateModel = any;
+const MONOGRAM_STATE_TOKEN = new StateToken<MonogramStateModel>('monogram');
 
-const MONOGRAM_STATE_TOKEN = new StateToken<TextInputFormStateModel>('monogram');
+export const INPUT_FORM_STATE = 'monogram.forms.textInput';
 
-@State<TextInputFormStateModel>({
+type MnStateContext = StateContext<MonogramState>;
+
+@State<MonogramStateModel>({
   name: MONOGRAM_STATE_TOKEN,
-  defaults: {}
+  defaults: {
+    forms: {
+      textInput: {
+        ...defaultForm,
+      }
+    }
+  }
 })
 @Injectable()
 export class MonogramState {
+
+  @Selector()
+  static isInputFormDirty(state: MonogramStateModel): boolean {
+    return state.forms.textInput.dirty;
+  }
+
+  @Action(SaveNewForm)
+  saveNewForm(_ctx: MnStateContext) {
+
+  }
+
 }

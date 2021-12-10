@@ -1,5 +1,5 @@
-<form [formGroup]="inputForm" class="app-text-input" fxLayout="column" fxLayoutAlign="start center"
-      ngxsForm="textInput">
+<form [formGroup]="inputForm" [ngxsFormClearOnDestroy]="true" [ngxsForm]="formName" class="app-text-input"
+      fxLayout="column" fxLayoutAlign="start center">
 
   <mat-form-field appearance="outline">
     <mat-label>Favorite food</mat-label>
@@ -13,7 +13,9 @@
       fxFlex=""
       matInput placeholder="Ex. It makes me feel..."
     ></textarea>
-    <mat-hint>Saved</mat-hint>
+    <mat-hint *ngIf="(isFormDirty$ | async) === false">
+      Saved
+    </mat-hint>
   </mat-form-field>
 
 </form>
