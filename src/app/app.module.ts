@@ -23,6 +23,7 @@ import { DocumentComponent } from './document/document.component';
 import { HomeComponent } from './home/home.component';
 import { ReaderComponent } from './reader/reader.component';
 import { SettingsComponent } from './settings/settings.component';
+import { MonogramState } from './state';
 import { TextInputComponent } from './text-input/text-input.component';
 
 @NgModule({
@@ -38,8 +39,12 @@ import { TextInputComponent } from './text-input/text-input.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxsModule.forRoot([], { developmentMode: !environment.production }),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsModule.forRoot([
+      MonogramState,
+    ], { developmentMode: !environment.production }),
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      name: 'Monogram',
+    }),
     NgxsRouterPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot(),
     NgxsFormPluginModule.forRoot(),

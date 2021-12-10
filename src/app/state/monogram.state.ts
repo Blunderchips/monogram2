@@ -3,12 +3,12 @@ import { State, StateToken } from '@ngxs/store';
 
 export type TextInputFormStateModel = any;
 
-const TEXT_INPUT_FORM_STATE_MODEL = new StateToken<TextInputFormStateModel>('zoo');
+const MONOGRAM_STATE_TOKEN = new StateToken<TextInputFormStateModel>('monogram');
 
 @State<TextInputFormStateModel>({
-  name: TEXT_INPUT_FORM_STATE_MODEL,
+  name: MONOGRAM_STATE_TOKEN,
   defaults: {}
 })
 @Injectable()
-export class InputFormState {
+export class MonogramState {
 }
