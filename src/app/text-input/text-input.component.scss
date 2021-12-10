@@ -2,10 +2,25 @@
   width: 100%;
 }
 
-.mat-form-field {
-  width: 100%;
-}
-
 form {
   height: 100%;
+}
+
+.app-text-input {
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  &__textarea {
+
+    height: 100%;
+
+    ::ng-deep .mat-form-field-wrapper,
+    ::ng-deep .mat-form-field-flex,
+    ::ng-deep .mat-form-field-infix {
+      height: 100%;
+    }
+  }
+
 }
