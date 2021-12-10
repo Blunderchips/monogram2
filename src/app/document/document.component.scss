@@ -6,8 +6,3 @@
 mat-card {
   height: calc(100% - 32px);
 }
-
-mat-tab-group,
-::ng-deep .mat-tab-body-wrapper {
-  height: 100%;
-}

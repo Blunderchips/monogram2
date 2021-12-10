@@ -50,7 +50,6 @@ import { NewDocumentComponent } from './new-document/new-document.component';
     MatCardModule,
     MatProgressBarModule,
     MatTabsModule,
-    MatDividerModule,
   ],
   providers: [],
   bootstrap: [
