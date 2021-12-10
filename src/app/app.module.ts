@@ -3,7 +3,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -18,11 +17,11 @@ import { NgxsModule } from '@ngxs/store';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TextInputComponent } from './text-input/text-input.component';
-import { HomeComponent } from './home/home.component';
-import { SettingsComponent } from './settings/settings.component';
 import { DocumentComponent } from './document/document.component';
-import { NewDocumentComponent } from './new-document/new-document.component';
+import { HomeComponent } from './home/home.component';
+import { ReaderComponent } from './reader/reader.component';
+import { SettingsComponent } from './settings/settings.component';
+import { TextInputComponent } from './text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,7 @@ import { NewDocumentComponent } from './new-document/new-document.component';
     HomeComponent,
     SettingsComponent,
     DocumentComponent,
-    NewDocumentComponent,
+    ReaderComponent,
   ],
   imports: [
     BrowserModule,

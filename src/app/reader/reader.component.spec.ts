@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewDocumentComponent } from './new-document.component';
+import { ReaderComponent } from './reader.component';
 
-describe('NewDocumentComponent', () => {
-  let component: NewDocumentComponent;
-  let fixture: ComponentFixture<NewDocumentComponent>;
+describe('ReaderComponent', () => {
+  let component: ReaderComponent;
+  let fixture: ComponentFixture<ReaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewDocumentComponent ]
+      declarations: [ ReaderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewDocumentComponent);
+    fixture = TestBed.createComponent(ReaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

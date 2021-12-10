@@ -2,30 +2,30 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DocumentComponent } from './document/document.component';
 import { HomeComponent } from './home/home.component';
-import { NewDocumentComponent } from './new-document/new-document.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ReaderComponent } from './reader/reader.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     pathMatch: 'full',
     redirectTo: 'home',
   },
   {
-    path:'home',
+    path: 'home',
     component: HomeComponent,
   },
   {
-    path: 'doc/:id',
-    component:DocumentComponent,
+    path: 'document/:id',
+    component: DocumentComponent,
   },
   {
     path: 'settings/:id',
-    component:SettingsComponent,
+    component: SettingsComponent,
   },
   {
-    path: 'new',
-    component:NewDocumentComponent,
+    path: 'reader/:id',
+    component: ReaderComponent,
   },
 ];
 
