@@ -14,7 +14,7 @@ form {
 
   &__textarea {
 
-    height: 100%;
+    height: calc(100% - 90px);
 
     ::ng-deep .mat-form-field-wrapper,
     ::ng-deep .mat-form-field-flex,
