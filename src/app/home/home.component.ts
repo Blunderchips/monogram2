@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Navigate } from '@ngxs/router-plugin';
+import { Store } from '@ngxs/store';
+import { v4 as uuid4 } from 'uuid';
 
 export interface Section {
   name: string;
@@ -22,5 +25,10 @@ export class HomeComponent {
   }, {
     name: 'Kitchen Remodel', updated: new Date('1/18/16'),
   },];
+
+  constructor(private store: Store) {
+  }
+
+  newDocument = () => this.store.dispatch(new Navigate(['/', 'document', uuid4()]));
 
 }
