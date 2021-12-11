@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DocumentComponent } from './document/document.component';
+import { FormsState } from './forms';
 import { HomeComponent } from './home/home.component';
 import { ReaderComponent } from './reader/reader.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -41,12 +42,15 @@ import { TextInputComponent } from './text-input/text-input.component';
     BrowserAnimationsModule,
     NgxsModule.forRoot([
       MonogramState,
+      FormsState,
     ], { developmentMode: !environment.production }),
     NgxsReduxDevtoolsPluginModule.forRoot({
       name: 'Monogram',
     }),
     NgxsRouterPluginModule.forRoot(),
-    NgxsStoragePluginModule.forRoot(),
+    NgxsStoragePluginModule.forRoot({
+      key: [ 'monogram' ],
+    }),
     NgxsFormPluginModule.forRoot(),
     FlexLayoutModule,
     MatButtonModule,
@@ -59,7 +63,6 @@ import { TextInputComponent } from './text-input/text-input.component';
     MatListModule,
     MatIconModule,
   ],
-  providers: [],
   bootstrap: [
     AppComponent,
   ]

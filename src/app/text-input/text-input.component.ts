@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { debounceTime, distinctUntilChanged, Observable } from 'rxjs';
-import { INPUT_FORM_STATE, MonogramState } from '../state';
+import { FormsState, INPUT_FORM_STATE } from '../forms';
 import { SaveNewForm } from '../state/monogram.actions';
 
 /**
@@ -20,7 +20,7 @@ export class TextInputComponent implements OnInit {
     textInput: new FormControl(''),
   });
 
-  @Select(MonogramState.isInputFormDirty) isFormDirty$: Observable<boolean>;
+  @Select(FormsState.isInputFormDirty) isFormDirty$: Observable<boolean>;
 
   get formName(): string {
     return INPUT_FORM_STATE;
