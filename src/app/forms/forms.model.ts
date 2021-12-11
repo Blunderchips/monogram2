@@ -1,17 +1,19 @@
-export const defaultForm: NgxsFormModel<unknown> = {
-  model: {},
+import { MnDocument } from '../state/monogram.model';
+
+export const defaultForm: NgxsFormModel<any> = {
+  model: undefined,
   status: 'null',
   dirty: false,
-  error: {},
+  errors: {},
 }
 
 export interface NgxsFormModel<T> {
   model: T | undefined;
   dirty: boolean;
-  error: any;
+  errors: any;
   status: string;
 }
 
 export interface FormStateModel {
-  textInput: NgxsFormModel<any>;
+  textInput: NgxsFormModel<MnDocument>;
 }
