@@ -1,29 +1,19 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { v4 as uuid4 } from 'uuid';
-
-export interface Section {
-  name: string;
-  updated: Date;
-}
+import { MonogramState } from '../state';
+import { MnDocument } from '../state/monogram.model';
 
 @Component({
-  selector: 'app-home', templateUrl: './home.component.html', styleUrls: ['./home.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
 
-  folders: Section[] = [{
-    name: 'Photos', updated: new Date('1/1/16'),
-  }, {
-    name: 'Recipes', updated: new Date('1/17/16'),
-  }, {
-    name: 'Work', updated: new Date('1/28/16'),
-  },];
-  notes: Section[] = [{
-    name: 'Vacation Itinerary', updated: new Date('2/20/16'),
-  }, {
-    name: 'Kitchen Remodel', updated: new Date('1/18/16'),
-  },];
+  @Select(MonogramState.documents) documents: Observable<Array<MnDocument>>;
 
   constructor(
     private router: Router,

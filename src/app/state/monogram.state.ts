@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Action, State, StateContext, StateToken, Store } from '@ngxs/store';
+import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/store';
 import { FormsState } from '../forms';
 import { SetNewDocumentFormPristine } from '../forms/forms.actions';
 import { SaveNewForm } from './monogram.actions';
@@ -21,6 +21,11 @@ export class MonogramState {
   constructor(private store: Store) {
   }
 
+  @Selector()
+  static documents(state: MonogramStateModel): Array<MnDocument> {
+    return state.documents;
+  }
+
   @Action(SaveNewForm)
   saveNewForm(ctx: MnStateContext, action: SaveNewForm): void {
 
@@ -34,6 +39,7 @@ export class MonogramState {
     const newDoc: MnDocument = {
       ...values.model,
       id: action.id,
+      updated: new Date().toISOString(),
     };
 
     const i = documents.findIndex(i => i.id === newDoc.id);
