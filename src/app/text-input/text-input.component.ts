@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
-import { debounceTime, distinctUntilChanged, Observable } from 'rxjs';
-import { FormsState, INPUT_FORM_STATE } from '../forms';
+import { debounceTime, distinctUntilChanged, map, Observable } from 'rxjs';
+import { FormsState, INPUT_FORM_STATE, InputForm } from '../forms';
 import { SaveNewForm } from '../state/monogram.actions';
 
 /**
@@ -15,18 +15,24 @@ import { SaveNewForm } from '../state/monogram.actions';
 })
 export class TextInputComponent implements OnInit {
 
+  id = '123';
+
   inputForm = new FormGroup({
     name: new FormControl('Untitled Document'),
     textInput: new FormControl(''),
   });
 
-  @Select(FormsState.isInputFormDirty) isFormDirty$: Observable<boolean>;
+  @Select(FormsState.textInputForm) inputForm$: Observable<InputForm>;
+
+  constructor(private store: Store) {
+  }
 
   get formName(): string {
     return INPUT_FORM_STATE;
   }
 
-  constructor(private store: Store) {
+  get isFormDirty$(): Observable<boolean> {
+    return this.inputForm$.pipe(map(i => i.dirty));
   }
 
   // todo unsubscribe
@@ -34,10 +40,10 @@ export class TextInputComponent implements OnInit {
     this.inputForm
       .valueChanges
       .pipe(
-        debounceTime(500),
+        debounceTime(500), // todo make env variable
         distinctUntilChanged(),
       )
-      .subscribe(() => this.store.dispatch(new SaveNewForm()));
+      .subscribe(() => this.store.dispatch(new SaveNewForm(this.id)));
   }
 
 }
