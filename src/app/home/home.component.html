@@ -1,8 +1,19 @@
 <div class="page">
 
-  <button (click)="newDocument()" mat-stroked-button>
-    New Document
-  </button>
+  <span class="app-home__search-header">
+
+    <form class="app-home__search-input">
+      <mat-form-field appearance="outline">
+        <mat-label>Favorite food</mat-label>
+        <input formControlName="search" matInput placeholder="Ex. Pizza">
+      </mat-form-field>
+    </form>
+
+    <button (click)="newDocument()" color="primary" mat-flat-button>
+      <mat-icon inline>add</mat-icon>
+    </button>
+
+  </span>
 
   <mat-nav-list>
     <div mat-subheader>Folders</div>
