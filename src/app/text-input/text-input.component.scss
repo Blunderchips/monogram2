@@ -21,6 +21,11 @@ form {
     ::ng-deep .mat-form-field-infix {
       height: 100%;
     }
+
+    textarea {
+      resize: none;
+    }
+
   }
 
 }
