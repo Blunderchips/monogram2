@@ -1,8 +1,6 @@
+@use 'styles/modules/page';
+
 :host {
   width: 100%;
   height: calc(100%);
-}
-
-mat-card {
-  height: calc(100% - 32px);
 }

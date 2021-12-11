@@ -3,7 +3,7 @@
 }
 
 form {
-  height: 100%;
+  height: calc(100% - 32px - 1em);
 }
 
 .app-text-input {
@@ -14,7 +14,7 @@ form {
 
   &__textarea {
 
-    height: calc(100% - 90px);
+    height: 100%;
 
     ::ng-deep .mat-form-field-wrapper,
     ::ng-deep .mat-form-field-flex,
