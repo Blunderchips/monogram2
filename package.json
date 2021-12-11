@@ -25,6 +25,7 @@
     "@capacitor/android": "^3.3.3",
     "@capacitor/angular": "2.0.0",
     "@capacitor/core": "3.3.3",
+    "@ngneat/until-destroy": "9.0.0",
     "@ngxs/devtools-plugin": "3.7.3",
     "@ngxs/form-plugin": "3.7.3",
     "@ngxs/router-plugin": "3.7.3",
