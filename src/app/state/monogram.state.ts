@@ -9,8 +9,7 @@ type MnStateContext = StateContext<MonogramState>;
 
 @State<MonogramStateModel>({
   name: MONOGRAM_STATE_TOKEN,
-  defaults: {
-  }
+  defaults: {}
 })
 @Injectable()
 export class MonogramState {
