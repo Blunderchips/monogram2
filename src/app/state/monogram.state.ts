@@ -22,12 +22,12 @@ export class MonogramState {
   }
 
   @Action(SaveNewForm)
-  saveNewForm(ctx: MnStateContext, action: SaveNewForm) {
+  saveNewForm(ctx: MnStateContext, action: SaveNewForm): void {
 
     const values = this.store.selectSnapshot(FormsState.textInputForm);
     const documents: Array<MnDocument> = [...ctx.getState().documents];
 
-    if (!values.model) {
+    if (!values.model || !action.id) {
       return; // todo handle better
     }
 

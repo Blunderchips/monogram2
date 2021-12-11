@@ -1,3 +1,3 @@
 <mat-card>
-  <app-text-input></app-text-input>
+  <app-text-input *ngIf="(getDocumentId | async) !== null" [id]="getDocumentId | async"></app-text-input>
 </mat-card>

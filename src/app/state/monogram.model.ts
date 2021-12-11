@@ -6,5 +6,5 @@ export interface MnDocument {
 }
 
 export interface MonogramStateModel {
-  documents: Array<MnDocument>,
+  documents: Array<MnDocument>;
 }

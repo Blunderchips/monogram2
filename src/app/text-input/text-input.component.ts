@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { debounceTime, distinctUntilChanged, map, Observable } from 'rxjs';
@@ -15,7 +15,7 @@ import { SaveNewForm } from '../state/monogram.actions';
 })
 export class TextInputComponent implements OnInit {
 
-  id = '123';
+  @Input() id: string | null;
 
   inputForm = new FormGroup({
     name: new FormControl('Untitled Document'),

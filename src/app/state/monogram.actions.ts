@@ -5,7 +5,7 @@ export class SaveNewForm {
   /**
    * @param {string} id target document UUID
    */
-  constructor(public id: string) {
+  constructor(public id: string | null) {
   }
 
 }
