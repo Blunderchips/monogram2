@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+// Define a custom typography config that overrides the font-family.
+$custom-typography: mat.define-typography-config(
+  $font-family: "Lato, -apple-system, sans-serif",
+);
+
+// Override typography CSS classes.
+@include mat.typography-hierarchy($custom-typography);
+
+// Override typography for a specific Angular Material components.
+@include mat.checkbox-typography($custom-typography);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include mat.all-component-typographies($custom-typography);
