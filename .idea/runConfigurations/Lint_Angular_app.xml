@@ -1,8 +1,10 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Tests (monogram2)" type="JavaScriptTestRunnerKarma">
-    <config-file value="$PROJECT_DIR$/karma.conf.js" />
-    <karma-package-dir value="$PROJECT_DIR$/node_modules/@angular/cli" />
-    <working-directory value="$PROJECT_DIR$" />
+  <configuration default="false" name="Lint Angular app" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="lint" />
+    </scripts>
     <node-interpreter value="project" />
     <envs />
     <method v="2">
