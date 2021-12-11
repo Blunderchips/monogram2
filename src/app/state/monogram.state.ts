@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext, StateToken, Store } from '@ngxs/store';
 import { FormsState } from '../forms';
-import { UpdateNewDocumentFormDirty } from '../forms/forms.actions';
+import { SetNewDocumentFormPristine } from '../forms/forms.actions';
 import { SaveNewForm } from './monogram.actions';
 import { MnDocument, MonogramStateModel } from './monogram.model';
 
@@ -43,7 +43,7 @@ export class MonogramState {
     ctx.patchState({ documents });
 
     ctx.dispatch([
-      new UpdateNewDocumentFormDirty(false),
+      new SetNewDocumentFormPristine(),
     ]);
   }
 
