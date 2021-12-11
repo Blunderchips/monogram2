@@ -23,7 +23,6 @@ describe('HomeComponent', () => {
         ]),
         NgxsRouterPluginModule.forRoot(),
         NgxsFormPluginModule.forRoot(),
-
       ]
     }).compileComponents();
   });
