@@ -1198,6 +1198,11 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
+"@capacitor/android@^3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.3.3.tgz#b09708e58fb942e2b5afe6081c7377d4785271aa"
+  integrity sha512-YfLW8gh/b3ZifmhQPFS9ybAnPp4MutQWGFYiAVecRh3O5nJD/UgZAmUmqpSoWRAOWbNGLX4lhWUIs+cCf552fg==
+
 "@capacitor/angular@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@capacitor/angular/-/angular-2.0.0.tgz#739a12c6e456ae7febcc10d49b8be0d11b478b7d"
