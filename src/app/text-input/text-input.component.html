@@ -1,17 +1,21 @@
 <form [formGroup]="inputForm" [ngxsFormClearOnDestroy]="true" [ngxsForm]="formName" class="app-text-input"
       fxLayout="column" fxLayoutAlign="start center">
 
+  <!-- todo label -->
+  <!-- todo placeholder text -->
   <mat-form-field appearance="outline">
     <mat-label>Favorite food</mat-label>
-    <input formControlName="name" matInput placeholder="Ex. Pizza" value="Sushi">
+    <input formControlName="name" matInput placeholder="Ex. Pizza">
   </mat-form-field>
 
+  <!-- todo placeholder text -->
   <mat-form-field appearance="outline" class="app-text-input__textarea">
     <mat-label>Textarea</mat-label>
     <textarea
       formControlName="textInput"
       fxFlex=""
-      matInput placeholder="Ex. It makes me feel..."
+      matInput
+      placeholder="Ex. It makes me feel..."
     ></textarea>
     <mat-hint *ngIf="(isFormDirty$ | async) === false">
       Saved
