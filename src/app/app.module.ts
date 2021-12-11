@@ -49,7 +49,7 @@ import { TextInputComponent } from './text-input/text-input.component';
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({
-      key: [ 'monogram' ],
+      key: ['monogram'],
     }),
     NgxsFormPluginModule.forRoot(),
     FlexLayoutModule,
