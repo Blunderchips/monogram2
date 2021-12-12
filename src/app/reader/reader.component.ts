@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './reader.component.html',
   styleUrls: ['./reader.component.scss']
 })
-export class ReaderComponent { }
+export class ReaderComponent {
+
+  click(): void {
+    // todo click event
+  }
+
+}
