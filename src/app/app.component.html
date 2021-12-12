@@ -5,10 +5,20 @@
   <div class="app-component__footer">
     <mat-divider></mat-divider>
     <nav mat-align-tabs="center" mat-stretch-tabs mat-tab-nav-bar>
-      <a [routerLink]="['/', 'home']" mat-tab-link>Home</a>
-      <a [routerLink]="['/', 'reader', '123']" mat-tab-link>Text</a>
-      <a [routerLink]="['/', 'document', '123']" mat-tab-link>Document</a>
-      <a [routerLink]="['/', 'settings', '123']" mat-tab-link>Settings</a>
+      <a [routerLink]="['/', 'home']" mat-tab-link>
+        Home
+      </a>
+      <a [disabled]="hasSelectedDocument | async" [routerLink]="['/', 'reader', selectedDocument | async]" mat-tab-link>
+        Text
+      </a>
+      <a [disabled]="hasSelectedDocument | async" [routerLink]="['/', 'document', selectedDocument | async]"
+         mat-tab-link>
+        Document
+      </a>
+      <a [disabled]="hasSelectedDocument | async" [routerLink]="['/', 'settings', selectedDocument | async]"
+         mat-tab-link>
+        Settings
+      </a>
     </nav>
   </div>
 
