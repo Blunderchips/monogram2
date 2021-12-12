@@ -1,4 +1,6 @@
 .page {
   height: calc(100% - 1px); // -1px for divider
-  padding: 16px;
+  padding: 16px 16px 0 16px; // no padding on the bottom
+  display: flex;
+  flex-direction: column;
 }
