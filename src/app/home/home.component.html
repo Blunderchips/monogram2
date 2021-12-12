@@ -2,7 +2,7 @@
 
   <span class="app-home__search-header">
 
-    <form class="app-home__search-input">
+    <form [formGroup]="searchForm" [ngxsFormClearOnDestroy]="true" [ngxsForm]="searchFormName" class="app-home__search-input">
       <mat-form-field appearance="outline">
         <mat-label>Favorite food</mat-label>
         <input formControlName="search" matInput placeholder="Ex. Pizza">
