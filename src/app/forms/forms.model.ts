@@ -16,4 +16,9 @@ export interface NgxsFormModel<T> {
 
 export interface FormStateModel {
   textInput: NgxsFormModel<MnDocument>;
+  documentSearch: NgxsFormModel<DocumentSearchFormModel>;
+}
+
+export interface DocumentSearchFormModel {
+  search: string;
 }
