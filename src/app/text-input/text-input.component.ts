@@ -44,7 +44,6 @@ export class TextInputComponent implements OnInit {
     this.documents$.pipe(
       take(1),
     ).subscribe(documents => {
-      console.log(documents);
       const selectedDocument = documents.find(i => i.id === this.id);
       this.inputForm.patchValue({ ...selectedDocument });
     });
