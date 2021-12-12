@@ -15,15 +15,17 @@
 
   </span>
 
-  <mat-nav-list class="app-home__document-list" fxFlex>
-    <div mat-subheader>Folders</div>
-    <span>
+  <!-- Document list -->
+  <span class="app-home__document-list" fxFlex>
+    <!-- <div mat-subheader>Folders</div> -->
+    <mat-divider></mat-divider>
+    <mat-nav-list class="app-home__document-list__items" fxFlex>
       <a *ngFor="let folder of documents | async" [routerLink]="['/', 'document', folder.id]" mat-list-item>
         <mat-icon mat-list-icon>folder</mat-icon>
         <div mat-line>{{ folder.name }}</div>
         <div mat-line>{{ folder.updated | date }}</div>
       </a>
-    </span>
-  </mat-nav-list>
+    </mat-nav-list>
+  </span>
 
 </div>

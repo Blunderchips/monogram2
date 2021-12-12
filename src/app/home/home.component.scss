@@ -29,7 +29,14 @@
   }
 
   &__document-list {
-    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+
+    &__items {
+      overflow-y: scroll;
+    }
   }
 
 }
