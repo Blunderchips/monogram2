@@ -36,7 +36,10 @@ export class MonogramState {
   saveNewForm(ctx: MnStateContext, action: SaveNewForm): void {
 
     const values = this.store.selectSnapshot(FormsState.textInputForm);
-    const documents: Array<MnDocument> = [...ctx.getState().documents];
+
+    const documents: Array<MnDocument> = ctx.getState()?.documents
+      ? [...ctx.getState().documents]   // copy of documents array
+      : [];                             // new empty array
 
     if (!values.model || !action.id) {
       return; // todo handle better
