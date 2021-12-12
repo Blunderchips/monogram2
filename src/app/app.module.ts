@@ -3,6 +3,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -25,6 +26,7 @@ import { HomeComponent } from './home/home.component';
 import { ReaderComponent } from './reader/reader.component';
 import { SettingsComponent } from './settings/settings.component';
 import { MonogramState } from './state';
+import { TapIconComponent } from './tap-icon/tap-icon.component';
 import { TextInputComponent } from './text-input/text-input.component';
 
 @NgModule({
@@ -35,6 +37,7 @@ import { TextInputComponent } from './text-input/text-input.component';
     SettingsComponent,
     DocumentComponent,
     ReaderComponent,
+    TapIconComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,8 +65,9 @@ import { TextInputComponent } from './text-input/text-input.component';
     MatTabsModule,
     MatListModule,
     MatIconModule,
+    MatRippleModule,
   ],
-  providers:[
+  providers: [
     FormGroupDirective,
   ],
   bootstrap: [
