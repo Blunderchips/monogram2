@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/store';
 import { FormsState } from '../forms';
 import { SetNewDocumentFormPristine } from '../forms/forms.actions';
-import { SaveNewForm } from './monogram.actions';
+import { SaveNewForm, SelectDocument } from './monogram.actions';
 import { MnDocument, MonogramStateModel } from './monogram.model';
 
 const MONOGRAM_STATE_TOKEN = new StateToken<MonogramStateModel>('monogram');
@@ -13,6 +13,7 @@ type MnStateContext = StateContext<MonogramStateModel>;
   name: MONOGRAM_STATE_TOKEN,
   defaults: {
     documents: [],
+    selectedDocument: null,
   }
 })
 @Injectable()
@@ -24,6 +25,11 @@ export class MonogramState {
   @Selector()
   static documents(state: MonogramStateModel): Array<MnDocument> {
     return state.documents;
+  }
+
+  @Selector()
+  static getSelectedDocument(state: MonogramStateModel): string | null {
+    return state.selectedDocument;
   }
 
   @Action(SaveNewForm)
@@ -51,6 +57,13 @@ export class MonogramState {
     ctx.dispatch([
       new SetNewDocumentFormPristine(),
     ]);
+  }
+
+  @Action(SelectDocument)
+  selectDocument(ctx: MnStateContext, action: SelectDocument): void {
+    ctx.patchState({
+      selectedDocument: action.id,
+    });
   }
 
 }

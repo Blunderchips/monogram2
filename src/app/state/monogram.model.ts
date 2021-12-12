@@ -9,4 +9,5 @@ export interface MnDocument {
 
 export interface MonogramStateModel {
   documents: Array<MnDocument>;
+  selectedDocument: string | null;
 }
