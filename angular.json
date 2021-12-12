@@ -118,6 +118,7 @@
   },
   "defaultProject": "monogram2",
   "cli": {
+    "analytics": "7ae650b0-2cf7-4cb1-81c6-78e3bc727b84",
     "defaultCollection": "@angular-eslint/schematics"
   }
 }
