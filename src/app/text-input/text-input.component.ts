@@ -2,9 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Select, Store } from '@ngxs/store';
-import { debounceTime, distinctUntilChanged, map, Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, Observable, take } from 'rxjs';
 import { FormsState, INPUT_FORM_STATE, InputForm } from '../forms';
+import { MonogramState } from '../state';
 import { SaveNewForm } from '../state/monogram.actions';
+import { MnDocument } from '../state/monogram.model';
 
 /**
  * Document text input form.
@@ -25,6 +27,7 @@ export class TextInputComponent implements OnInit {
   });
 
   @Select(FormsState.textInputForm) inputForm$: Observable<InputForm>;
+  @Select(MonogramState.documents) documents$: Observable<Array<MnDocument>>;
 
   constructor(private store: Store) {
   }
@@ -38,6 +41,18 @@ export class TextInputComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.documents$.pipe(
+      take(1),
+    ).subscribe(documents => {
+      console.log(documents);
+      const selectedDocument = documents.find(i => i.id === this.id);
+      this.inputForm.patchValue({ ...selectedDocument });
+    });
+
+    this.#subscribeToChanges();
+  }
+
+  #subscribeToChanges(): void {
     this.inputForm
       .valueChanges
       .pipe(
