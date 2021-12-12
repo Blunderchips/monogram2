@@ -1,3 +1,11 @@
 <div (click)="click()" class="page" fxLayout="column" fxLayoutAlign="space-around center" matRipple>
-  <app-tap-icon></app-tap-icon>
+  <div *ngIf="(isRunning$ | async) === true; then isRunning else notRunning"></div>
 </div>
+
+<ng-template #isRunning>
+  running
+</ng-template>
+
+<ng-template #notRunning>
+  <app-tap-icon></app-tap-icon>
+</ng-template>

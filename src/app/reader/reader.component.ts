@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { RendererState, ToggleRunning } from '../renderer';
 
 @Component({
   selector: 'app-reader',
@@ -7,8 +10,13 @@ import { Component } from '@angular/core';
 })
 export class ReaderComponent {
 
+  @Select(RendererState.isRunning) isRunning$: Observable<boolean>;
+
+  constructor(private store: Store) {
+  }
+
   click(): void {
-    // todo click event
+    this.store.dispatch(new ToggleRunning());
   }
 
 }
