@@ -5,7 +5,7 @@
   <div class="app-component__footer">
     <mat-divider></mat-divider>
     <nav mat-align-tabs="center" mat-stretch-tabs mat-tab-nav-bar>
-      <a [routerLink]="['/', 'home']" mat-tab-link>
+      <a #rla="routerLinkActive" [active]="rla.isActive" [routerLink]="['/', 'home']" mat-tab-link routerLinkActive>
         Home
       </a>
       <a [disabled]="hasSelectedDocument | async" [routerLink]="['/', 'reader', selectedDocument | async]" mat-tab-link>
