@@ -7,4 +7,8 @@ export interface RendererStateModel {
    * Current chunk status.
    */
   chunk: MnChunk | null;
+  /**
+   * Number of words to render.
+   */
+  chunkSize: number;
 }
