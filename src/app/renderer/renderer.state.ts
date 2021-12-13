@@ -17,9 +17,8 @@ type RendererStateContext = StateContext<RendererStateModel>;
   name: RENDERER_STATE_TOKEN,
   defaults: {
     cursor: null,
-    isRunning: false,
     chunk: ChunkerService.NULL_CHUNK,
-    chunkSize: 1,
+    chunkSize: 4,
   }
 })
 @Injectable()
@@ -38,17 +37,17 @@ export class RendererState {
 
   @Selector()
   static isRunning(state: RendererStateModel): boolean {
-    return state.isRunning;
+    return state.chunk?.chunk !== '';
   }
 
   @Action(ToggleRunning)
-  toggleRunning(ctx: RendererStateContext): void {
-    const {
-      isRunning,
-    } = ctx.getState();
-    ctx.patchState({
-      isRunning: !isRunning,
-    });
+  toggleRunning(_ctx: RendererStateContext): void {
+    // const {
+    //   isRunning,
+    // } = ctx.getState();
+    // ctx.patchState({
+    //   isRunning: !isRunning,
+    // });
   }
 
   @Action(RendererTick)
@@ -68,7 +67,7 @@ export class RendererState {
       chunkSize,
     } = ctx.getState();
 
-    const newChunk = this.chunker.chunk(doc.textInput, chunkSize, 0, period);
+    const newChunk = this.chunker.chunk(doc.textInput, chunkSize, 0, period * chunkSize);
     ctx.patchState({ chunk: newChunk });
   }
 

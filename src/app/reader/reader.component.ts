@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { RendererService, RendererState, ToggleRunning } from '../renderer';
 
+@UntilDestroy()
 @Component({
   selector: 'app-reader',
   templateUrl: './reader.component.html',
   styleUrls: ['./reader.component.scss']
 })
-export class ReaderComponent {
+export class ReaderComponent implements OnInit {
 
   @Select(RendererState.isRunning) isRunning$: Observable<boolean>;
   @Select(RendererState.cursor) cursor$: Observable<string>;
@@ -17,6 +19,16 @@ export class ReaderComponent {
     private store: Store,
     private renderer: RendererService,
   ) {
+  }
+
+  ngOnInit(): void {
+    this.isRunning$.pipe(
+      untilDestroyed(this),
+    ).subscribe(isRunning => {
+      if (!isRunning) {
+        this.renderer.stop();
+      }
+    })
   }
 
   click(): void {

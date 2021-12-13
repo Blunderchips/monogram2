@@ -107,7 +107,20 @@ describe('ChunkerService', () => {
       'hello world this test this and this I am fine',
       3,
       0,
-      4
+      4,
+    )).toEqual(expected);
+  });
+
+  it('should process offsets & chunk size', () => {
+    const expected: MnChunk = {
+      chunk: '5 6 7 8',
+      hasNextChunk: false,
+    }
+    expect(service.chunk(
+      '1 2 3 4 5 6 7 8',
+      5,
+      0,
+      4,
     )).toEqual(expected);
   });
 

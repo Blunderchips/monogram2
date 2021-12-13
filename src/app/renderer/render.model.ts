@@ -1,8 +1,10 @@
 import { MnChunk } from '../chunker.service';
 
 export interface RendererStateModel {
+  /**
+   * Current chunker index.
+   */
   cursor: string | null;
-  isRunning: boolean;
   /**
    * Current chunk status.
    */
