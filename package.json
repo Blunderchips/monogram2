@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "ng build",
+    "build": "ng build --configuration production && cap sync",
     "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve",
