@@ -20,6 +20,7 @@ import { NgxsModule } from '@ngxs/store';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DocumentListItemComponent } from './document-list-item/document-list-item.component';
 import { DocumentComponent } from './document/document.component';
 import { FormsState } from './forms';
 import { HomeComponent } from './home/home.component';
@@ -38,6 +39,7 @@ import { TextInputComponent } from './text-input/text-input.component';
     DocumentComponent,
     ReaderComponent,
     TapIconComponent,
+    DocumentListItemComponent,
   ],
   imports: [
     BrowserModule,

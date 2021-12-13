@@ -21,11 +21,7 @@
     <!-- <div mat-subheader>Folders</div> -->
     <mat-divider></mat-divider>
     <mat-nav-list class="app-home__document-list__items" fxFlex>
-      <a *ngFor="let folder of documents | async" [routerLink]="['/', 'reader', folder.id]" mat-list-item>
-        <mat-icon mat-list-icon>folder</mat-icon>
-        <div mat-line>{{ folder.name }}</div>
-        <div mat-line>{{ folder.updated | date }}</div>
-      </a>
+      <app-document-list-item *ngFor="let i of documents | async" [document]="i"></app-document-list-item>
     </mat-nav-list>
   </span>
 
