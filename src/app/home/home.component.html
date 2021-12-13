@@ -18,7 +18,6 @@
 
   <!-- Document list -->
   <span class="app-home__document-list" fxFlex>
-    <!-- <div mat-subheader>Folders</div> -->
     <mat-divider></mat-divider>
     <mat-nav-list class="app-home__document-list__items" fxFlex>
       <app-document-list-item *ngFor="let i of documents | async" [document]="i"></app-document-list-item>
