@@ -37,7 +37,8 @@ export class MonogramState {
 
     const values = this.store.selectSnapshot(FormsState.textInputForm);
 
-    const documents: Array<MnDocument> = ctx.getState()?.documents
+    const state = ctx.getState();
+    const documents: Array<MnDocument> = Array.isArray(state?.documents)
       ? [...ctx.getState().documents]   // copy of documents array
       : [];                             // new empty array
 
