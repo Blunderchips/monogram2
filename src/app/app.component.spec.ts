@@ -26,4 +26,8 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+  it('should mark null is not an array', () => {
+    expect(Array.isArray(null)).toBeFalse();
+  });
+
 });
