@@ -3,7 +3,9 @@
 </div>
 
 <ng-template #isRunning>
-  running
+  <span class="unselectable">
+    {{ cursor$ | async }}
+  </span>
 </ng-template>
 
 <ng-template #notRunning>

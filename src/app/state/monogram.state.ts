@@ -28,14 +28,21 @@ export class MonogramState {
   }
 
   @Selector()
-  static getSelectedDocument(state: MonogramStateModel): string | null {
+  static getSelectedDocumentId(state: MonogramStateModel): string | null {
     return state.selectedDocument;
+  }
+
+  @Selector()
+  static getSelectedDocument(state: MonogramStateModel): MnDocument | null {
+    return state.documents.find(doc => doc.id === state.selectedDocument) || null;
   }
 
   @Action(SaveNewForm)
   saveNewForm(ctx: MnStateContext, action: SaveNewForm): void {
 
     const values = this.store.selectSnapshot(FormsState.textInputForm);
+
+    // todo validate form values
 
     const state = ctx.getState();
     const documents: Array<MnDocument> = Array.isArray(state?.documents)

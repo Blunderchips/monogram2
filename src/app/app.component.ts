@@ -14,7 +14,7 @@ import { SelectDocument } from './state/monogram.actions';
 })
 export class AppComponent implements OnInit {
 
-  @Select(MonogramState.getSelectedDocument) selectedDocument: Observable<string | null>
+  @Select(MonogramState.getSelectedDocumentId) selectedDocument: Observable<string | null>
 
   constructor(
     private route: ActivatedRoute,
