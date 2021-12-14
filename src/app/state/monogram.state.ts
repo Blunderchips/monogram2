@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/store';
+import { DateCompareService } from '../date-compare';
 import { FormsState } from '../forms';
 import { SetNewDocumentFormPristine } from '../forms/forms.actions';
 import { SaveNewForm, SelectDocument } from './monogram.actions';
@@ -19,7 +20,10 @@ type MnStateContext = StateContext<MonogramStateModel>;
 @Injectable()
 export class MonogramState {
 
-  constructor(private store: Store) {
+  constructor(
+    private store: Store,
+    private dateCompare: DateCompareService,
+  ) {
   }
 
   @Selector()
@@ -63,7 +67,7 @@ export class MonogramState {
     if (i > -1) documents[i] = newDoc;
     else documents.push(newDoc);
 
-    ctx.patchState({ documents });
+    ctx.patchState({ documents: documents.sort(this.dateCompare.compare) });
 
     ctx.dispatch([
       new SetNewDocumentFormPristine(),
