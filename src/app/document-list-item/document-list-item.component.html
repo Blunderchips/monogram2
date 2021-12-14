@@ -1,5 +1,5 @@
 <a [routerLink]="['/', 'reader', document.id]" class="app-document-list-item" mat-list-item>
   <mat-icon mat-list-icon>folder</mat-icon>
   <div mat-line>{{ document.name }}</div>
-  <div mat-line>{{ document.updated | date }}</div>
+  <div mat-line>{{ document.updated | date: 'short' }}</div>
 </a>
