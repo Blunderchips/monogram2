@@ -25,6 +25,7 @@ import { DocumentComponent } from './document/document.component';
 import { FormsState } from './forms';
 import { HomeComponent } from './home/home.component';
 import { ReaderComponent } from './reader/reader.component';
+import { RendererState } from './renderer';
 import { SettingsComponent } from './settings/settings.component';
 import { MonogramState } from './state';
 import { TapIconComponent } from './tap-icon/tap-icon.component';
@@ -48,6 +49,7 @@ import { TextInputComponent } from './text-input/text-input.component';
     NgxsModule.forRoot([
       MonogramState,
       FormsState,
+      RendererState,
     ], { developmentMode: !environment.production }),
     NgxsReduxDevtoolsPluginModule.forRoot({
       name: 'Monogram',

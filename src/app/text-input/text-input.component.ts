@@ -22,12 +22,12 @@ export class TextInputComponent implements OnInit {
   @Input() id: string | null;
 
   inputForm = new FormGroup({
-    name: new FormControl('Untitled Document'),
+    name: new FormControl('Untitled Document'), // todo make default document title env variable
     textInput: new FormControl(''),
   });
 
   @Select(FormsState.textInputForm) inputForm$: Observable<InputForm>;
-  @Select(MonogramState.documents) documents$: Observable<Array<MnDocument>>;
+  @Select(MonogramState.getSelectedDocument) selectedDocument$: Observable<MnDocument>;
 
   constructor(private store: Store) {
   }
@@ -41,12 +41,9 @@ export class TextInputComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.documents$.pipe(
+    this.selectedDocument$.pipe(
       take(1),
-    ).subscribe(documents => {
-      const selectedDocument = documents.find(i => i.id === this.id);
-      this.inputForm.patchValue({ ...selectedDocument });
-    });
+    ).subscribe(selectedDocument => this.inputForm.patchValue({ ...selectedDocument }));
 
     this.#subscribeToChanges();
   }

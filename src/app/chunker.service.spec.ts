@@ -86,12 +86,42 @@ describe('ChunkerService', () => {
     expect(service.chunk('hello world. world.', 1, 1)).toEqual(expected);
   });
 
-  it('should process segments', () => {
+  it('should process cursors', () => {
     const expected: MnChunk = {
       chunk: 'two.',
       hasNextChunk: false,
     }
     expect(service.chunk('one two. three.', 2, 0, 1)).toEqual(expected);
+  });
+
+  it('should process offset overflow', () => {
+    expect(service.chunk('one two. three.', 2, 0, 3)).toEqual(ChunkerService.NULL_CHUNK);
+  });
+
+  it('should process offsets & chunk size', () => {
+    const expected: MnChunk = {
+      chunk: 'this and this',
+      hasNextChunk: true,
+    }
+    expect(service.chunk(
+      'hello world this test this and this I am fine',
+      3,
+      0,
+      4,
+    )).toEqual(expected);
+  });
+
+  it('should process offsets & chunk size', () => {
+    const expected: MnChunk = {
+      chunk: '5 6 7 8',
+      hasNextChunk: false,
+    }
+    expect(service.chunk(
+      '1 2 3 4 5 6 7 8',
+      5,
+      0,
+      4,
+    )).toEqual(expected);
   });
 
 });
