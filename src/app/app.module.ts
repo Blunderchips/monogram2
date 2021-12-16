@@ -18,6 +18,7 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,6 +63,7 @@ import { MonogramState } from './state';
       key: [MonogramState],
     }),
     NgxsFormPluginModule.forRoot(),
+    NgxsResetPluginModule.forRoot(),
     FlexLayoutModule,
     MatButtonModule,
     ReactiveFormsModule,
