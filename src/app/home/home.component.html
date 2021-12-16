@@ -19,9 +19,11 @@
   <!-- Document list -->
   <span class="app-home__document-list" fxFlex>
     <mat-divider></mat-divider>
-    <mat-nav-list class="app-home__document-list__items" fxFlex>
-      <app-document-list-item *ngFor="let i of documents | async" [document]="i"></app-document-list-item>
-    </mat-nav-list>
+    <ng-scrollbar>
+      <mat-nav-list class="app-home__document-list__items" fxFlex>
+        <app-document-list-item *ngFor="let i of documents | async" [document]="i"></app-document-list-item>
+      </mat-nav-list>
+    </ng-scrollbar>
   </span>
 
 </div>
