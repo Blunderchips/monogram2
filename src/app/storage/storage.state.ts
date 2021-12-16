@@ -3,22 +3,22 @@ import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/
 import { FormsState } from '../forms';
 import { SetNewDocumentFormPristine } from '../forms/forms.actions';
 import { DateCompareService } from '../services/date-compare';
-import { SaveNewForm, SelectDocument } from './monogram.actions';
-import { MnDocument, MonogramStateModel } from './monogram.model';
+import { SaveNewForm, SelectDocument } from './storage.actions';
+import { MnDocument, StorageStateModel } from './storage.model';
 
-const MONOGRAM_STATE_TOKEN = new StateToken<MonogramStateModel>('monogram');
+const STORAGE_STATE_TOKEN = new StateToken<StorageStateModel>('storage');
 
-type MnStateContext = StateContext<MonogramStateModel>;
+type MnStateContext = StateContext<StorageStateModel>;
 
-@State<MonogramStateModel>({
-  name: MONOGRAM_STATE_TOKEN,
+@State<StorageStateModel>({
+  name: STORAGE_STATE_TOKEN,
   defaults: {
     documents: [],
     selectedDocument: null,
   }
 })
 @Injectable()
-export class MonogramState {
+export class StorageState {
 
   constructor(
     private store: Store,
@@ -27,17 +27,17 @@ export class MonogramState {
   }
 
   @Selector()
-  static documents(state: MonogramStateModel): Array<MnDocument> {
+  static documents(state: StorageStateModel): Array<MnDocument> {
     return state.documents;
   }
 
   @Selector()
-  static getSelectedDocumentId(state: MonogramStateModel): string | null {
+  static getSelectedDocumentId(state: StorageStateModel): string | null {
     return state.selectedDocument;
   }
 
   @Selector()
-  static getSelectedDocument(state: MonogramStateModel): MnDocument | null {
+  static getSelectedDocument(state: StorageStateModel): MnDocument | null {
     return state.documents.find(doc => doc.id === state.selectedDocument) || null;
   }
 

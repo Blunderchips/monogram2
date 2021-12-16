@@ -3,8 +3,7 @@ import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router } from '@
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Select, Store } from '@ngxs/store';
 import { map, Observable } from 'rxjs';
-import { MonogramState } from './state';
-import { SelectDocument } from './state/monogram.actions';
+import { SelectDocument, StorageState } from './storage';
 
 @UntilDestroy()
 @Component({
@@ -14,7 +13,7 @@ import { SelectDocument } from './state/monogram.actions';
 })
 export class AppComponent implements OnInit {
 
-  @Select(MonogramState.getSelectedDocumentId) selectedDocument: Observable<string | null>
+  @Select(StorageState.getSelectedDocumentId) selectedDocument: Observable<string | null>
 
   constructor(
     private route: ActivatedRoute,

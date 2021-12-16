@@ -7,7 +7,7 @@ export interface MnDocument {
   updated: string;
 }
 
-export interface MonogramStateModel {
+export interface StorageStateModel {
   documents: Array<MnDocument>;
   selectedDocument: string | null;
 }
