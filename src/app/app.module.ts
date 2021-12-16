@@ -27,11 +27,11 @@ import { DocumentListItemComponent } from './component/document-list-item';
 import { HomeComponent } from './component/home';
 import { NavItemComponent } from './component/nav-item';
 import { ReaderComponent } from './component/reader';
-import { RendererState } from './component/renderer';
 import { SettingsComponent } from './component/settings';
 import { TapIconComponent } from './component/tap-icon';
 import { TextInputComponent } from './component/text-input';
 import { FormsState } from './forms';
+import { RendererState } from './services/renderer';
 import { StorageState } from './storage';
 
 @NgModule({
