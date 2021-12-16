@@ -3,7 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterTestingModule } from '@angular/router/testing';
 import { v4 as uuid4 } from 'uuid';
-import { MnDocument } from '../../storage/monogram.model';
+import { MnDocument } from '../../storage';
 import { DocumentListItemComponent } from './document-list-item.component';
 
 describe('DocumentListItemComponent', () => {

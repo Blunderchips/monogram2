@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import * as dayjs from 'dayjs';
 import { v4 as uuid4 } from 'uuid';
-import { MnDocument } from '../../storage/monogram.model';
+import { MnDocument } from '../../storage';
 import { DateCompareService } from './date-compare.service';
 
 describe('DateCompareService', () => {
