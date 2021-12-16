@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Select, Store } from '@ngxs/store';
 import { debounceTime, distinctUntilChanged, map, Observable, take } from 'rxjs';
 import { FormsState, INPUT_FORM_STATE, InputForm } from '../../forms';
+import { ResetFormState } from '../../forms/forms.actions';
 import { MonogramState } from '../../state';
 import { SaveNewForm } from '../../state/monogram.actions';
 import { MnDocument } from '../../state/monogram.model';
@@ -17,10 +18,16 @@ import { MnDocument } from '../../state/monogram.model';
   templateUrl: './text-input.component.html',
   styleUrls: ['./text-input.component.scss']
 })
-export class TextInputComponent implements OnInit {
+export class TextInputComponent implements OnInit, OnDestroy {
 
+  /**
+   * Target document ID.
+   */
   @Input() id: string | null;
 
+  /**
+   * Angular form object.
+   */
   inputForm = new FormGroup({
     name: new FormControl('Untitled Document'), // todo make default document title env variable
     textInput: new FormControl(''),
@@ -46,6 +53,10 @@ export class TextInputComponent implements OnInit {
     ).subscribe(selectedDocument => this.inputForm.patchValue({ ...selectedDocument }));
 
     this.#subscribeToChanges();
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(new ResetFormState());
   }
 
   #subscribeToChanges(): void {

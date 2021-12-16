@@ -3,7 +3,7 @@ import { Selector, State, StateToken } from '@ngxs/store';
 import { MnDocument } from '../state/monogram.model';
 import { defaultForm, DocumentSearchFormModel, FormStateModel, NgxsFormModel } from './forms.model';
 
-const FORMS_STATE_TOKEN = new StateToken<FormStateModel>('forms');
+export const FORMS_STATE_TOKEN = new StateToken<FormStateModel>('forms');
 
 export type InputForm = NgxsFormModel<MnDocument>;
 export const INPUT_FORM_STATE = 'forms.textInput';

@@ -5004,6 +5004,13 @@ ngx-scrollbar@9.0.0:
     bezier-easing "^2.1.0"
     tslib "^2.3.1"
 
+ngxs-reset-plugin@1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/ngxs-reset-plugin/-/ngxs-reset-plugin-1.4.1.tgz#03f8eb8ab5456d168d41154dcda7901f8415609d"
+  integrity sha512-YmGFAX8eKZPFbLQofiu7j0CE3NLgSWlw+HugEjCT5tMJWDmVzBJTAvLNj/2vzSk3onQnXdHiMXQTLv5foNJkkg==
+  dependencies:
+    tslib "^2.0.0"
+
 nice-napi@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nice-napi/-/nice-napi-1.0.2.tgz#dc0ab5a1eac20ce548802fc5686eaa6bc654927b"
