@@ -17,6 +17,7 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule } from '@ngxs/store';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -70,6 +71,7 @@ import { TextInputComponent } from './text-input/text-input.component';
     MatListModule,
     MatIconModule,
     MatRippleModule,
+    NgScrollbarModule,
   ],
   providers: [
     FormGroupDirective,
