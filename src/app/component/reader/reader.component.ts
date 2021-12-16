@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { RendererService, RendererState, ToggleRunning } from '../renderer';
+import { RendererService, RendererState, ToggleRunning } from '../../services/renderer';
 
 @UntilDestroy()
 @Component({
