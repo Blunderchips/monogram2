@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/store';
-import { DateCompareService } from '../services/date-compare';
 import { FormsState } from '../forms';
 import { SetNewDocumentFormPristine } from '../forms/forms.actions';
+import { DateCompareService } from '../services/date-compare';
 import { SaveNewForm, SelectDocument } from './monogram.actions';
 import { MnDocument, MonogramStateModel } from './monogram.model';
 
@@ -53,7 +53,7 @@ export class MonogramState {
       ? [...ctx.getState().documents]   // copy of documents array
       : [];                             // new empty array
 
-    if (!values.model || !action.id) {
+    if (!values?.model || !action?.id) {
       return; // todo handle better
     }
 
@@ -63,9 +63,11 @@ export class MonogramState {
       updated: new Date().toISOString(),
     };
 
+    // todo comment & test
     const i = documents.findIndex(i => i.id === newDoc.id);
     if (i > -1) documents[i] = newDoc;
     else documents.push(newDoc);
+    // --
 
     ctx.patchState({ documents: documents.sort(this.dateCompare.compare) });
 
