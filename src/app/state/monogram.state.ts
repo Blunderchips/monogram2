@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/store';
-import { DateCompareService } from '../date-compare';
+import { DateCompareService } from '../services/date-compare';
 import { FormsState } from '../forms';
 import { SetNewDocumentFormPristine } from '../forms/forms.actions';
 import { SaveNewForm, SelectDocument } from './monogram.actions';

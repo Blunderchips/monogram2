@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as dayjs from 'dayjs';
-import { MnDocument } from '../state/monogram.model';
+import { MnDocument } from '../../state/monogram.model';
 
 @Injectable({
   providedIn: 'root'
