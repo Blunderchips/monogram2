@@ -7,7 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsModule } from '@ngxs/store';
-import { MonogramState } from '../../state';
+import { StorageState } from '../../storage';
 import { TextInputComponent } from './text-input.component';
 
 describe('TextInputComponent', () => {
@@ -23,7 +23,7 @@ describe('TextInputComponent', () => {
       imports: [
         RouterTestingModule,
         NgxsModule.forRoot([
-          MonogramState,
+          StorageState,
         ]),
         NgxsRouterPluginModule.forRoot(),
         NgxsFormPluginModule.forRoot(),

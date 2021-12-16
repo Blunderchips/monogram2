@@ -5,9 +5,7 @@ import { Select, Store } from '@ngxs/store';
 import { debounceTime, distinctUntilChanged, map, Observable, take } from 'rxjs';
 import { FormsState, INPUT_FORM_STATE, InputForm } from '../../forms';
 import { ResetFormState } from '../../forms/forms.actions';
-import { MonogramState } from '../../state';
-import { SaveNewForm } from '../../state/monogram.actions';
-import { MnDocument } from '../../state/monogram.model';
+import { MnDocument, SaveNewForm, StorageState } from '../../storage';
 
 /**
  * Document text input form.
@@ -34,7 +32,7 @@ export class TextInputComponent implements OnInit, OnDestroy {
   });
 
   @Select(FormsState.textInputForm) inputForm$: Observable<InputForm>;
-  @Select(MonogramState.getSelectedDocument) selectedDocument$: Observable<MnDocument>;
+  @Select(StorageState.getSelectedDocument) selectedDocument$: Observable<MnDocument>;
 
   constructor(private store: Store) {
   }

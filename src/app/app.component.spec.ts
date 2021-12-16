@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxsModule } from '@ngxs/store';
 import { AppComponent } from './app.component';
-import { MonogramState } from './state';
+import { StorageState } from './storage';
 
 describe('AppComponent', () => {
 
@@ -11,7 +11,7 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         NgxsModule.forRoot([
-          MonogramState,
+          StorageState,
         ])
       ],
       declarations: [

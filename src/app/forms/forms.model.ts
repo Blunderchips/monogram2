@@ -1,4 +1,4 @@
-import { MnDocument } from '../state/monogram.model';
+import { MnDocument } from '../storage';
 
 export const defaultForm: NgxsFormModel<any> = {
   model: undefined,

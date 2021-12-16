@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
-import { MonogramState } from '../../state';
+import { StorageState } from '../../storage';
 import { RendererService } from './renderer.service';
 
 describe('RendererService', () => {
@@ -11,7 +11,7 @@ describe('RendererService', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxsModule.forRoot([
-          MonogramState
+          StorageState
         ]),
       ],
     });

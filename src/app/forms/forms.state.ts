@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Selector, State, StateToken } from '@ngxs/store';
-import { MnDocument } from '../state/monogram.model';
+import { MnDocument } from '../storage';
 import { defaultForm, DocumentSearchFormModel, FormStateModel, NgxsFormModel } from './forms.model';
 
 export const FORMS_STATE_TOKEN = new StateToken<FormStateModel>('forms');

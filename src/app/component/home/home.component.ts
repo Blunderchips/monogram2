@@ -5,8 +5,7 @@ import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { v4 as uuid4 } from 'uuid';
 import { DOCUMENT_SEARCH_FORM_STATE } from '../../forms';
-import { MonogramState } from '../../state';
-import { MnDocument } from '../../state/monogram.model';
+import { MnDocument, StorageState } from '../../storage';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +14,7 @@ import { MnDocument } from '../../state/monogram.model';
 })
 export class HomeComponent {
 
-  @Select(MonogramState.documents) documents: Observable<Array<MnDocument>>;
+  @Select(StorageState.documents) documents: Observable<Array<MnDocument>>;
 
   /**
    * Document search form.

@@ -19,7 +19,7 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
-import { environment } from '../environments/environment';
+import { environment } from '../environments';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DocumentComponent } from './component/document';
@@ -32,7 +32,7 @@ import { SettingsComponent } from './component/settings';
 import { TapIconComponent } from './component/tap-icon';
 import { TextInputComponent } from './component/text-input';
 import { FormsState } from './forms';
-import { MonogramState } from './state';
+import { StorageState } from './storage';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,7 @@ import { MonogramState } from './state';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxsModule.forRoot([
-      MonogramState,
+      StorageState,
       FormsState,
       RendererState,
     ], { developmentMode: !environment.production }),
@@ -60,7 +60,7 @@ import { MonogramState } from './state';
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({
-      key: [MonogramState],
+      key: [StorageState],
     }),
     NgxsFormPluginModule.forRoot(),
     NgxsResetPluginModule.forRoot(),
