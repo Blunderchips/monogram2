@@ -4,21 +4,19 @@
 
   <div class="app-component__footer">
     <mat-divider></mat-divider>
-    <nav mat-align-tabs="center" mat-stretch-tabs mat-tab-nav-bar>
-      <a #rla="routerLinkActive" [active]="rla.isActive" [routerLink]="['/', 'home']" mat-tab-link routerLinkActive>
+    <nav class="app-component__footer__item" mat-tab-nav-bar>
+      <app-nav-item [routerLink]="['/', 'home']">
         Home
-      </a>
-      <a [disabled]="hasSelectedDocument | async" [routerLink]="['/', 'reader', selectedDocument | async]" mat-tab-link>
+      </app-nav-item>
+      <app-nav-item [disabled]="hasSelectedDocument" [routerLink]="['/', 'reader', selectedDocument | async]">
         Text
-      </a>
-      <a [disabled]="hasSelectedDocument | async" [routerLink]="['/', 'document', selectedDocument | async]"
-         mat-tab-link>
+      </app-nav-item>
+      <app-nav-item [disabled]="hasSelectedDocument" [routerLink]="['/', 'document', selectedDocument | async]">
         Document
-      </a>
-      <a [disabled]="hasSelectedDocument | async" [routerLink]="['/', 'settings', selectedDocument | async]"
-         mat-tab-link>
+      </app-nav-item>
+      <app-nav-item [disabled]="hasSelectedDocument" [routerLink]="['/', 'settings', selectedDocument | async]">
         Settings
-      </a>
+      </app-nav-item>
     </nav>
   </div>
 
