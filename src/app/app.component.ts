@@ -3,6 +3,7 @@ import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router } from '@
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Select, Store } from '@ngxs/store';
 import { map, Observable } from 'rxjs';
+import { v4 as uuid4 } from 'uuid';
 import { SelectDocument, StorageState } from './storage';
 
 @UntilDestroy()
@@ -21,6 +22,10 @@ export class AppComponent implements OnInit {
     private router: Router,
   ) {
   }
+
+  get uuid() {
+    return uuid4();
+  };
 
   get hasSelectedDocument(): Observable<boolean> {
     return this.selectedDocument.pipe(

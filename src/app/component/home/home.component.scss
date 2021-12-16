@@ -20,16 +20,11 @@
   &__search-input {
 
     flex-grow: 1;
-    padding-right: 1em;
 
     ::ng-deep .mat-form-field-wrapper,
     ::ng-deep .mat-form-field {
       width: 100%;
     }
-  }
-
-  &__search-button {
-    margin: 5px 0;
   }
 
   &__document-list {

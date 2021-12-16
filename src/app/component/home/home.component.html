@@ -1,5 +1,6 @@
 <div class="page">
 
+  <!-- Search header -->
   <span class="app-home__search-header">
 
     <form [formGroup]="searchForm" [ngxsFormClearOnDestroy]="true" [ngxsForm]="searchFormName"
@@ -9,10 +10,6 @@
         <input formControlName="search" matInput placeholder="Ex. Pizza">
       </mat-form-field>
     </form>
-
-    <button (click)="newDocument()" class="app-home__search-button" color="primary" mat-flat-button>
-      <mat-icon>add</mat-icon>
-    </button>
 
   </span>
 

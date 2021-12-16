@@ -6,7 +6,7 @@
     <mat-divider></mat-divider>
     <nav class="app-component__footer__item" mat-tab-nav-bar>
       <app-nav-item [routerLink]="['/', 'home']">
-        Home
+        <mat-icon>home</mat-icon>
       </app-nav-item>
       <app-nav-item [disabled]="hasSelectedDocument" [routerLink]="['/', 'reader', selectedDocument | async]">
         Text
@@ -16,6 +16,9 @@
       </app-nav-item>
       <app-nav-item [disabled]="hasSelectedDocument" [routerLink]="['/', 'settings', selectedDocument | async]">
         Settings
+      </app-nav-item>
+      <app-nav-item [routerLink]="['/', 'document', uuid]">
+        <mat-icon>add</mat-icon>
       </app-nav-item>
     </nav>
   </div>
