@@ -17,6 +17,9 @@
       <app-nav-item [disabled]="hasSelectedDocument" [routerLink]="['/', 'settings', selectedDocument | async]">
         Settings
       </app-nav-item>
+      <app-nav-item [routerLink]="['/', 'document', uuid]">
+        New
+      </app-nav-item>
     </nav>
   </div>
 
