@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
-import { MonogramState } from '../state';
+import { MonogramState } from '../../state';
 import { RendererService } from './renderer.service';
 
 describe('RendererService', () => {
@@ -9,7 +9,11 @@ describe('RendererService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([MonogramState,]),]
+      imports: [
+        NgxsModule.forRoot([
+          MonogramState
+        ]),
+      ],
     });
     service = TestBed.inject(RendererService);
   });
