@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MnDocument } from '../state/monogram.model';
+import { MnDocument } from '../../state/monogram.model';
 
 @Component({
   selector: 'app-document-list-item',
