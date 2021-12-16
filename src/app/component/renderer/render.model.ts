@@ -1,4 +1,4 @@
-import { MnChunk } from '../chunker.service';
+import { MnChunk } from '../../services/chunker';
 
 export interface RendererStateModel {
   /**

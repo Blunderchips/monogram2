@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/store';
-import { ChunkerService } from '../chunker.service';
-import { MonogramState } from '../state';
-import { MnDocument } from '../state/monogram.model';
+import { ChunkerService } from '../../services/chunker';
+import { MonogramState } from '../../state';
+import { MnDocument } from '../../state/monogram.model';
 import { RendererStateModel } from './render.model';
 import { RendererTick, ToggleRunning } from './renderer.actions';
 

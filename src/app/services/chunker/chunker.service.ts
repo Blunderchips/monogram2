@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SentenceTokenizerService } from './sentence-tokenizer.service';
+import { SentenceTokenizerService } from '../sentence-tokenizer';
 
 export interface MnChunk {
   chunk: string;

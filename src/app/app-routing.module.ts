@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DocumentComponent } from './document/document.component';
-import { HomeComponent } from './home/home.component';
-import { ReaderComponent } from './reader/reader.component';
-import { SettingsComponent } from './settings/settings.component';
+import { DocumentComponent } from './component/document';
+import { HomeComponent } from './component/home';
+import { ReaderComponent } from './component/reader';
+import { SettingsComponent } from './component/settings';
 
 const routes: Routes = [
   {

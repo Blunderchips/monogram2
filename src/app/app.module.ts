@@ -21,17 +21,17 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DocumentListItemComponent } from './document-list-item/document-list-item.component';
-import { DocumentComponent } from './document/document.component';
+import { DocumentComponent } from './component/document';
+import { DocumentListItemComponent } from './component/document-list-item';
+import { HomeComponent } from './component/home';
+import { NavItemComponent } from './component/nav-item';
+import { ReaderComponent } from './component/reader';
+import { RendererState } from './component/renderer';
+import { SettingsComponent } from './component/settings';
+import { TapIconComponent } from './component/tap-icon';
+import { TextInputComponent } from './component/text-input';
 import { FormsState } from './forms';
-import { HomeComponent } from './home/home.component';
-import { NavItemComponent } from './nav-item/nav-item.component';
-import { ReaderComponent } from './reader/reader.component';
-import { RendererState } from './renderer';
-import { SettingsComponent } from './settings/settings.component';
 import { MonogramState } from './state';
-import { TapIconComponent } from './tap-icon/tap-icon.component';
-import { TextInputComponent } from './text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,7 @@ import { TextInputComponent } from './text-input/text-input.component';
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({
-      key: ['monogram'],
+      key: [MonogramState],
     }),
     NgxsFormPluginModule.forRoot(),
     FlexLayoutModule,

@@ -3,10 +3,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Select, Store } from '@ngxs/store';
 import { debounceTime, distinctUntilChanged, map, Observable, take } from 'rxjs';
-import { FormsState, INPUT_FORM_STATE, InputForm } from '../forms';
-import { MonogramState } from '../state';
-import { SaveNewForm } from '../state/monogram.actions';
-import { MnDocument } from '../state/monogram.model';
+import { FormsState, INPUT_FORM_STATE, InputForm } from '../../forms';
+import { MonogramState } from '../../state';
+import { SaveNewForm } from '../../state/monogram.actions';
+import { MnDocument } from '../../state/monogram.model';
 
 /**
  * Document text input form.

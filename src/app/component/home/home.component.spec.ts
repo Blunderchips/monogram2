@@ -7,18 +7,18 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsModule } from '@ngxs/store';
-import { MonogramState } from '../state';
-import { TextInputComponent } from './text-input.component';
+import { MonogramState } from '../../state';
+import { HomeComponent } from './home.component';
 
-describe('TextInputComponent', () => {
+describe('HomeComponent', () => {
 
-  let component: TextInputComponent;
-  let fixture: ComponentFixture<TextInputComponent>;
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        TextInputComponent,
+        HomeComponent,
       ],
       imports: [
         RouterTestingModule,
@@ -31,12 +31,12 @@ describe('TextInputComponent', () => {
         MatFormFieldModule,
         MatInputModule,
         BrowserAnimationsModule,
-      ],
+      ]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TextInputComponent);
+    fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
