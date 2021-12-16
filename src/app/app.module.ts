@@ -25,6 +25,7 @@ import { DocumentListItemComponent } from './document-list-item/document-list-it
 import { DocumentComponent } from './document/document.component';
 import { FormsState } from './forms';
 import { HomeComponent } from './home/home.component';
+import { NavItemComponent } from './nav-item/nav-item.component';
 import { ReaderComponent } from './reader/reader.component';
 import { RendererState } from './renderer';
 import { SettingsComponent } from './settings/settings.component';
@@ -42,6 +43,7 @@ import { TextInputComponent } from './text-input/text-input.component';
     ReaderComponent,
     TapIconComponent,
     DocumentListItemComponent,
+    NavItemComponent,
   ],
   imports: [
     BrowserModule,
