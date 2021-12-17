@@ -9,13 +9,13 @@
         <mat-icon>home</mat-icon>
       </app-nav-item>
       <app-nav-item [disabled]="hasSelectedDocument" [routerLink]="['/', 'reader', selectedDocument | async]">
-        Text
+        <mat-icon>auto_stories</mat-icon>
       </app-nav-item>
       <app-nav-item [disabled]="hasSelectedDocument" [routerLink]="['/', 'document', selectedDocument | async]">
-        Document
+        <mat-icon>article</mat-icon>
       </app-nav-item>
       <app-nav-item [disabled]="hasSelectedDocument" [routerLink]="['/', 'settings', selectedDocument | async]">
-        Settings
+        <mat-icon>settings</mat-icon>
       </app-nav-item>
       <app-nav-item [routerLink]="['/', 'document', uuid]">
         <mat-icon>add</mat-icon>
