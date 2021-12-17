@@ -1,8 +1,48 @@
-<div class="page">
-  <button color="warn" mat-stroked-button>
-    Delete
-  </button>
-  <button mat-stroked-button>
-    Reset
-  </button>
+<div class="page" fxLayout="column" fxLayoutAlign="space-between none">
+
+  <div>
+    <h2>
+      Settings page
+    </h2>
+
+    <form class="app-settings__form">
+
+      <mat-form-field appearance="outline">
+        <mat-label>
+          Words per minute
+        </mat-label>
+
+        <input matInput type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>
+          Chunk size
+        </mat-label>
+
+        <input matInput type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>
+          Choose one
+        </mat-label>
+
+        <select matNativeControl>
+          <option selected value="valid">Valid option</option>
+          <option value="invalid">Invalid option</option>
+        </select>
+      </mat-form-field>
+
+    </form>
+
+    <button class="app-settings__delete-button" color="warn" mat-stroked-button>
+      Delete
+    </button>
+  </div>
+
+  <div class="app-settings__footer">
+    <code>Version label</code>
+  </div>
+
 </div>

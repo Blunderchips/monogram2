@@ -2,5 +2,24 @@
 
 :host {
   width: 100%;
-  height: calc(100%);
+  height: 100%;
+}
+
+.app-settings {
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &__delete-button {
+    width: 100%;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+  }
+
 }
