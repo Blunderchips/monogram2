@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButtonModule } from '@angular/material/button';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavItemComponent } from './nav-item.component';
 
@@ -14,6 +15,7 @@ describe('NavItemComponent', () => {
       ],
       imports: [
         RouterTestingModule,
+        MatButtonModule,
       ]
     }).compileComponents();
   });
@@ -26,6 +28,10 @@ describe('NavItemComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should not return null when testing if active', () => {
+    expect(component.active).toBeDefined();
   });
 
 });

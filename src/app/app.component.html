@@ -4,20 +4,20 @@
 
   <div class="app-component__footer">
     <mat-divider></mat-divider>
-    <nav class="app-component__footer__item" mat-tab-nav-bar>
-      <app-nav-item [router]="['/', 'home']">
+    <nav class="app-component__footer__items">
+      <app-nav-item [link]="['/', 'home']">
         <mat-icon>home</mat-icon>
       </app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [router]="['/', 'reader', selectedDocument | async]">
+      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'reader', selectedDocument | async]">
         <mat-icon>auto_stories</mat-icon>
       </app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [router]="['/', 'document', selectedDocument | async]">
+      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'document', selectedDocument | async]">
         <mat-icon>article</mat-icon>
       </app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [router]="['/', 'settings', selectedDocument | async]">
+      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'settings', selectedDocument | async]">
         <mat-icon>settings</mat-icon>
       </app-nav-item>
-      <app-nav-item (click)="generateNewDocumentId()" [router]="['/', 'document', uuid]">
+      <app-nav-item (click)="generateNewDocumentId()" [link]="['/', 'document', uuid]">
         <mat-icon>add</mat-icon>
       </app-nav-item>
     </nav>

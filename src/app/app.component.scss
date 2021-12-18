@@ -3,11 +3,9 @@
   &__footer {
     width: 100%;
 
-    &__item {
-      ::ng-deep .mat-tab-links {
-        display: flex;
-        justify-content: space-between;
-      }
+    &__items {
+      display: flex;
+      justify-content: space-around;
     }
   }
 

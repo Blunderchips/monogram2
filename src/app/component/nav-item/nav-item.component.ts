@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
+import { Router } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
 
 export type RouterLink = Array<any> | null;
@@ -11,18 +13,32 @@ export type RouterLink = Array<any> | null;
 export class NavItemComponent {
 
   /**
-   * Router actions.
+   * Router link.
    */
-  @Input() router: RouterLink;
+  @Input() link: RouterLink;
   /**
    * @default false
    */
   @Input() disabled = of(false);
 
+  constructor(private router: Router) {
+  }
+
   get routerLink(): Observable<RouterLink> {
     return this.disabled.pipe(
-      map(isDisabled => isDisabled ? null : this.router),
+      map(isDisabled => isDisabled ? null : this.link),
     );
+  }
+
+  get active(): boolean {
+    if (!this.link) {
+      return false; // a null link cannot be active
+    }
+    return this.router.url.includes(this.link[1]);
+  }
+
+  get colour(): ThemePalette | null {
+    return this.active ? 'primary' : null;
   }
 
 }
