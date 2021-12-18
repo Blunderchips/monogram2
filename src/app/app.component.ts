@@ -3,7 +3,6 @@ import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router } from '@
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Select, Store } from '@ngxs/store';
 import { map, Observable } from 'rxjs';
-import { NewDocumentService } from './services/new-document';
 import { SelectDocument, StorageState } from './storage';
 
 @UntilDestroy()
@@ -20,15 +19,7 @@ export class AppComponent implements OnInit {
     private route: ActivatedRoute,
     private store: Store,
     private router: Router,
-    private newDoc: NewDocumentService,
   ) {
-  }
-
-  /**
-   * @returns {string } a randomly generated UUID.
-   */
-  get uuid(): string {
-    return this.newDoc.getValue();
   }
 
   get hasSelectedDocument(): Observable<boolean> {
@@ -57,10 +48,6 @@ export class AppComponent implements OnInit {
     } else {
       return null;
     }
-  }
-
-  generateNewDocumentId(): void {
-    this.newDoc.next(); // refresh document behavior subject
   }
 
 }

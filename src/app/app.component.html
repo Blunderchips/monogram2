@@ -17,9 +17,6 @@
       <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'settings', selectedDocument | async]">
         <mat-icon>settings</mat-icon>
       </app-nav-item>
-      <app-nav-item (click)="generateNewDocumentId()" [link]="['/', 'document', uuid]">
-        <mat-icon>add</mat-icon>
-      </app-nav-item>
     </nav>
   </div>
 
