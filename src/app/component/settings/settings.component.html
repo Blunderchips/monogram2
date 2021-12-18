@@ -25,12 +25,31 @@
 
       <mat-form-field appearance="outline">
         <mat-label>
-          Choose one
+          Text alignment
         </mat-label>
 
-        <select matNativeControl>
-          <option selected value="valid">Valid option</option>
-          <option value="invalid">Invalid option</option>
+        <select formControlName="alignment" matNativeControl>
+          <option
+            *ngFor="let alignment of alignments"
+            [value]="alignment"
+          >
+            {{getAlignmentLabel(alignment)}}
+          </option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>
+          Text weight
+        </mat-label>
+
+        <select formControlName="weight" matNativeControl>
+          <option
+            *ngFor="let weight of weights"
+            [value]="weight"
+          >
+            {{getWeightLabel(weight)}}
+          </option>
         </select>
       </mat-form-field>
 
