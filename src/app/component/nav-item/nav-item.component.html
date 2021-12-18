@@ -1,4 +1,4 @@
-<a #rla="routerLinkActive" [active]="rla.isActive" [disabled]="(disabled | async) === true" [routerLink]="routerLink"
-   mat-tab-link routerLinkActive>
+<a #rla="routerLinkActive" [active]="rla.isActive" [disabled]="(disabled | async) === true"
+   [routerLink]="routerLink | async" mat-tab-link routerLinkActive>
   <ng-content></ng-content>
 </a>

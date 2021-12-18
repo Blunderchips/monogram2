@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
+
+export type RouterLink = Array<any> | null;
 
 @Component({
   selector: 'app-nav-item',
@@ -11,9 +13,16 @@ export class NavItemComponent {
   /**
    * Router actions.
    */
-  @Input() routerLink: Array<any>;
+  @Input() router: RouterLink;
   /**
    * @default false
    */
   @Input() disabled = of(false);
+
+  get routerLink(): Observable<RouterLink> {
+    return this.disabled.pipe(
+      map(isDisabled => isDisabled ? null : this.router),
+    );
+  }
+
 }
