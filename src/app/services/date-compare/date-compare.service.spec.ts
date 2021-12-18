@@ -32,6 +32,10 @@ describe('DateCompareService', () => {
         name: 'Doc A',
         textInput: 'Hello world',
         updated: date.clone().toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       const docB: MnDocument = {
@@ -39,6 +43,10 @@ describe('DateCompareService', () => {
         name: 'Doc B',
         textInput: 'another hello world',
         updated: date.clone().toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       expect(service.compare(docA, docB)).toBe(0);
@@ -53,6 +61,10 @@ describe('DateCompareService', () => {
         name: 'Doc A',
         textInput: 'Hello world',
         updated: date.clone().add(1, 'hour').toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       const docB: MnDocument = {
@@ -60,6 +72,10 @@ describe('DateCompareService', () => {
         name: 'Doc B',
         textInput: 'another hello world',
         updated: date.clone().toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       expect(service.compare(docA, docB)).toBe(-1);
@@ -99,6 +115,10 @@ describe('DateCompareService', () => {
         name: 'Doc A',
         textInput: 'Hello world',
         updated: date.clone().toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       const docB: MnDocument = {
@@ -106,6 +126,10 @@ describe('DateCompareService', () => {
         name: 'Doc B',
         textInput: 'another hello world',
         updated: date.clone().toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       const docC: MnDocument = {
@@ -113,6 +137,10 @@ describe('DateCompareService', () => {
         name: 'Doc C',
         textInput: 'yet another hello world',
         updated: date.clone().toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       const arr = [
@@ -133,6 +161,10 @@ describe('DateCompareService', () => {
         name: 'Doc A',
         textInput: 'Hello world',
         updated: date.clone().toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       const docB: MnDocument = {
@@ -140,6 +172,10 @@ describe('DateCompareService', () => {
         name: 'Doc B',
         textInput: 'another hello world',
         updated: date.clone().toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       const docC: MnDocument = {
@@ -147,6 +183,10 @@ describe('DateCompareService', () => {
         name: 'Doc C',
         textInput: 'yet another hello world',
         updated: date.clone().add(1, 'hour').toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       const arr = [
@@ -171,6 +211,10 @@ describe('DateCompareService', () => {
         name: 'Doc A',
         textInput: 'Hello world',
         updated: date.clone().toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       const docB: MnDocument = {
@@ -178,6 +222,10 @@ describe('DateCompareService', () => {
         name: 'Doc B',
         textInput: 'another hello world',
         updated: date.clone().add(1, 'hour').toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       const docC: MnDocument = {
@@ -185,6 +233,10 @@ describe('DateCompareService', () => {
         name: 'Doc C',
         textInput: 'yet another hello world',
         updated: date.clone().add(2, 'hour').toISOString(),
+        wordsPerMinute: 400,
+        alignment: 'text-align-center',
+        chunkSize: 3,
+        weight: 'mat-display-1',
       };
 
       const arr = [

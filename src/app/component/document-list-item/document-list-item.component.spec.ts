@@ -16,6 +16,10 @@ describe('DocumentListItemComponent', () => {
     name: 'Test document',
     textInput: 'hello world. How are you?',
     updated: new Date().toISOString(),
+    wordsPerMinute: 400,
+    alignment: 'text-align-center',
+    chunkSize: 3,
+    weight: 'mat-display-1',
   };
 
   beforeEach(async () => {
