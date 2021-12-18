@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/store';
 import { FormsState } from '../forms';
-import { SetNewDocumentFormPristine } from '../forms/forms.actions';
+import { SetNewDocumentFormPristine, SetSettingsFormPristine } from '../forms/forms.actions';
 import { DateCompareService } from '../services/date-compare';
-import { SaveNewForm, SelectDocument } from './storage.actions';
+import { SaveNewForm, SaveSettingsForm, SelectDocument } from './storage.actions';
 import { MnDocument, StorageStateModel } from './storage.model';
 
 const STORAGE_STATE_TOKEN = new StateToken<StorageStateModel>('storage');
@@ -65,7 +65,7 @@ export class StorageState {
 
     // todo comment & test
     const i = documents.findIndex(i => i.id === newDoc.id);
-    if (i > -1) documents[i] = newDoc;
+    if (i > -1) documents[i] = { ...documents[i], ...newDoc };
     else documents.push(newDoc);
     // --
 
@@ -81,6 +81,41 @@ export class StorageState {
     ctx.patchState({
       selectedDocument: action.id,
     });
+  }
+
+  @Action(SaveSettingsForm)
+  saveSettingsForm(ctx: MnStateContext, action: SaveSettingsForm): void {
+
+    const values = this.store.selectSnapshot(FormsState.settingsForm);
+
+    // todo validate form values
+
+    const state = ctx.getState();
+    const documents: Array<MnDocument> = Array.isArray(state?.documents)
+      ? [...ctx.getState().documents]   // copy of documents array
+      : [];                             // new empty array
+
+    if (!values?.model || !action?.id) {
+      return; // todo handle better
+    }
+
+    const newDoc: MnDocument | any = {
+      ...values.model,
+      id: action.id,
+      updated: new Date().toISOString(),
+    };
+
+    // todo comment & test
+    const i = documents.findIndex(i => i.id === newDoc.id);
+    if (i > -1) documents[i] = { ...documents[i], ...newDoc };
+    else documents.push(newDoc);
+    // --
+
+    ctx.patchState({ documents: documents.sort(this.dateCompare.compare) });
+
+    ctx.dispatch([
+      new SetSettingsFormPristine(),
+    ]);
   }
 
 }

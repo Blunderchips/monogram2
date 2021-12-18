@@ -1,8 +1,14 @@
 export interface MnDocument {
   id: UUID;
+  updated: string;
+  // input form
   name: string;
   textInput: string;
-  updated: string;
+  // settings
+  wordsPerMinute: number;
+  chunkSize: number;
+  alignment: TextAlignment;
+  weight: TextWeight;
 }
 
 export interface StorageStateModel {

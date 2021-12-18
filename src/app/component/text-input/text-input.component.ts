@@ -48,7 +48,14 @@ export class TextInputComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.selectedDocument$.pipe(
       take(1),
-    ).subscribe(selectedDocument => this.inputForm.patchValue({ ...selectedDocument }));
+    ).subscribe(document => {
+      if (document) {
+        this.inputForm.patchValue({
+          name: document.name,
+          textInput: document.textInput,
+        })
+      }
+    });
 
     this.#subscribeToChanges();
   }
