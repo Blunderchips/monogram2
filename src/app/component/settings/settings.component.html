@@ -1,8 +1,67 @@
-<div class="page">
-  <button color="warn" mat-stroked-button>
-    Delete
-  </button>
-  <button mat-stroked-button>
-    Reset
-  </button>
+<div class="page" fxLayout="column" fxLayoutAlign="space-between none">
+
+  <div>
+    <h2>
+      Settings
+    </h2>
+
+    <form [formGroup]="settingsForm" [ngxsForm]="formName" class="app-settings__form">
+
+      <mat-form-field appearance="outline">
+        <mat-label>
+          Words per minute
+        </mat-label>
+
+        <input formControlName="wordsPerMinute" matInput type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>
+          Chunk size
+        </mat-label>
+
+        <input formControlName="chunkSize" matInput type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>
+          Text alignment
+        </mat-label>
+
+        <select formControlName="alignment" matNativeControl>
+          <option
+            *ngFor="let alignment of alignments"
+            [value]="alignment"
+          >
+            {{getAlignmentLabel(alignment)}}
+          </option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>
+          Text weight
+        </mat-label>
+
+        <select formControlName="weight" matNativeControl>
+          <option
+            *ngFor="let weight of weights"
+            [value]="weight"
+          >
+            {{getWeightLabel(weight)}}
+          </option>
+        </select>
+      </mat-form-field>
+
+    </form>
+
+    <button class="app-settings__delete-button" color="warn" mat-stroked-button>
+      Delete this document
+    </button>
+  </div>
+
+  <div class="app-settings__footer">
+    <code>Version label</code>
+  </div>
+
 </div>
