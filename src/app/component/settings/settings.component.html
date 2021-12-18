@@ -5,14 +5,14 @@
       Settings
     </h2>
 
-    <form class="app-settings__form">
+    <form [formGroup]="settingsForm" [ngxsForm]="formName" class="app-settings__form">
 
       <mat-form-field appearance="outline">
         <mat-label>
           Words per minute
         </mat-label>
 
-        <input matInput type="number">
+        <input formControlName="wordsPerMinute" matInput type="number">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -20,7 +20,7 @@
           Chunk size
         </mat-label>
 
-        <input matInput type="number">
+        <input formControlName="chunkSize" matInput type="number">
       </mat-form-field>
 
       <mat-form-field appearance="outline">

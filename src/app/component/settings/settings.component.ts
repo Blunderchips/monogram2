@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SETTINGS_FORM_FORM_STATE } from '../../forms';
 import { ALIGNMENTS, GetAlignmentLabel } from '../../text-align.enum';
 import { GetWeightLabel, WEIGHTS } from '../../text-weight.enum';
 
@@ -16,6 +18,20 @@ export class SettingsComponent {
   get weights(): TextWeights {
     return WEIGHTS;
   }
+
+  get formName(): string {
+    return SETTINGS_FORM_FORM_STATE;
+  }
+
+  /**
+   * Document settings form control group.
+   */
+  settingsForm = new FormGroup({
+    wordsPerMinute: new FormControl(),
+    chunkSize: new FormControl(),
+    alignment: new FormControl(ALIGNMENTS[0], [Validators.required]),
+    weight: new FormControl(WEIGHTS[0], [Validators.required]),
+  });
 
   /**
    * @see GetAlignmentLabel

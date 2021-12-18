@@ -1,4 +1,4 @@
-import { MnDocument } from '../storage';
+import { DocumentSearchForm, InputForm, SettingsForm } from './forms.state';
 
 export const defaultForm: NgxsFormModel<any> = {
   model: undefined,
@@ -15,8 +15,9 @@ export interface NgxsFormModel<T> {
 }
 
 export interface FormStateModel {
-  textInput: NgxsFormModel<MnDocument>;
-  documentSearch: NgxsFormModel<DocumentSearchFormModel>;
+  textInput: InputForm;
+  documentSearch: DocumentSearchForm;
+  settings: SettingsForm;
 }
 
 export interface DocumentSearchFormModel {
