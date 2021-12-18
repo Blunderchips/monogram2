@@ -20,6 +20,7 @@
   &__search-input {
 
     flex-grow: 1;
+    padding-right: 1em;
 
     ::ng-deep .mat-form-field-wrapper,
     ::ng-deep .mat-form-field {
