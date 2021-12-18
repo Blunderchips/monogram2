@@ -27,8 +27,8 @@ export class SettingsComponent {
    * Document settings form control group.
    */
   settingsForm = new FormGroup({
-    wordsPerMinute: new FormControl(),
-    chunkSize: new FormControl(),
+    wordsPerMinute: new FormControl(400),
+    chunkSize: new FormControl(3),
     alignment: new FormControl(ALIGNMENTS[0], [Validators.required]),
     weight: new FormControl(WEIGHTS[0], [Validators.required]),
   });
