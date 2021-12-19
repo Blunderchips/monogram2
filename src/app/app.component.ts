@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  get tabButtonWidth(): number {
+  get tabButtonWidth(): number {    // todo test
     const numButton = 4;            // number of bottom navigation buttons
     return 100 / (numButton || 1);  // cannot divide by zero so default to 1
   }
