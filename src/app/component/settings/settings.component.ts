@@ -5,6 +5,7 @@ import { Select, Store } from '@ngxs/store';
 import { debounceTime, distinctUntilChanged, Observable, take } from 'rxjs';
 import { FormsState, SETTINGS_FORM_FORM_STATE, SettingsForm } from '../../forms';
 import { ResetFormState } from '../../forms/forms.actions';
+import { PromptService } from '../../services/prompt';
 import { DeleteDocument, MnDocument, SaveSettingsForm, StorageState } from '../../storage';
 import { ALIGNMENTS, GetAlignmentLabel } from '../../text-align.enum';
 import { GetWeightLabel, WEIGHTS } from '../../text-weight.enum';
@@ -31,7 +32,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     weight: new FormControl(WEIGHTS[0], [Validators.required]),
   });
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private prompt: PromptService) {
   }
 
   get alignments(): TextAlignments {
@@ -62,7 +63,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     this.selectedDocument$.pipe(
       untilDestroyed(this),
-    ).subscribe(document => this.id = document.id);
+    ).subscribe(document => this.id = document?.id);
 
     this.#subscribeToChanges();
   }
@@ -86,7 +87,14 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
 
   deleteDocument(): void {
-    this.store.dispatch(new DeleteDocument(this.id));
+    this.prompt.confirm(
+      'Are you sure you want to delete this document?',
+      'Delete this document? This action cannot be undone.'
+    ).subscribe(confirmed => {
+      if (confirmed) {
+        this.store.dispatch(new DeleteDocument(this.id));
+      }
+    })
   }
 
   #subscribeToChanges(): void {
