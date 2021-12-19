@@ -19,4 +19,8 @@ export class DocumentListItemComponent implements OnInit {
     }
   }
 
+  menuButtonClicked($event: Event): void {
+    $event.preventDefault();
+  }
+
 }
