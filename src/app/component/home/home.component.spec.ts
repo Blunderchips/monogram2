@@ -45,4 +45,8 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('hasSearchValue should be defined', () => {
+    expect(component.hasSearchValue).toBeDefined();
+  });
+
 });
