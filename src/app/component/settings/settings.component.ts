@@ -18,7 +18,7 @@ import { GetWeightLabel, WEIGHTS } from '../../text-weight.enum';
 export class SettingsComponent implements OnInit, OnDestroy {
 
   @Select(FormsState.settingsForm) settingsForm$: Observable<SettingsForm>;
-  @Select(StorageState.getSelectedDocument) selectedDocument$: Observable<MnDocument>;
+  @Select(StorageState.selectedDocument) selectedDocument$: Observable<MnDocument>;
 
   id: string; // local copy of document ID
 

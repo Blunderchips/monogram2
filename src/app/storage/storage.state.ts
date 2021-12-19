@@ -32,12 +32,12 @@ export class StorageState {
   }
 
   @Selector()
-  static getSelectedDocumentId(state: StorageStateModel): string | null {
+  static selectedDocumentId(state: StorageStateModel): string | null {
     return state.selectedDocument;
   }
 
   @Selector()
-  static getSelectedDocument(state: StorageStateModel): MnDocument | null {
+  static selectedDocument(state: StorageStateModel): MnDocument | null {
     return state.documents.find(doc => doc.id === state.selectedDocument) || null;
   }
 

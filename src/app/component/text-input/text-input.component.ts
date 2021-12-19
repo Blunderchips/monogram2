@@ -32,7 +32,7 @@ export class TextInputComponent implements OnInit, OnDestroy {
   });
 
   @Select(FormsState.textInputForm) inputForm$: Observable<InputForm>;
-  @Select(StorageState.getSelectedDocument) selectedDocument$: Observable<MnDocument>;
+  @Select(StorageState.selectedDocument) selectedDocument$: Observable<MnDocument>;
 
   constructor(private store: Store) {
   }

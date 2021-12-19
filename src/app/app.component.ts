@@ -13,7 +13,7 @@ import { SelectDocument, StorageState } from './storage';
 })
 export class AppComponent implements OnInit {
 
-  @Select(StorageState.getSelectedDocumentId) selectedDocument: Observable<string | null>
+  @Select(StorageState.selectedDocumentId) selectedDocument: Observable<string | null>
 
   constructor(
     private route: ActivatedRoute,
