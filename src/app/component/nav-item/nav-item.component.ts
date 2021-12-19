@@ -20,6 +20,10 @@ export class NavItemComponent {
    * @default false
    */
   @Input() disabled = of(false);
+  /**
+   * Material icon to use. Cannot be null.
+   */
+  @Input() matIcon: string;
 
   constructor(private router: Router) {
   }

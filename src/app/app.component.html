@@ -5,18 +5,15 @@
   <div class="app-component__footer">
     <mat-divider></mat-divider>
     <nav class="app-component__footer__items">
-      <app-nav-item [link]="['/', 'home']">
-        <mat-icon>home</mat-icon>
+      <app-nav-item [link]="['/', 'home']" fxFlex="25" matIcon="home"></app-nav-item>
+      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'reader', selectedDocument | async]" fxFlex="25"
+                    matIcon="auto_stories">
       </app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'reader', selectedDocument | async]">
-        <mat-icon>auto_stories</mat-icon>
+      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'document', selectedDocument | async]" fxFlex="25"
+                    matIcon="article">
       </app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'document', selectedDocument | async]">
-        <mat-icon>article</mat-icon>
-      </app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'settings', selectedDocument | async]">
-        <mat-icon>settings</mat-icon>
-      </app-nav-item>
+      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'settings', selectedDocument | async]" fxFlex="25"
+                    matIcon="settings"></app-nav-item>
     </nav>
   </div>
 

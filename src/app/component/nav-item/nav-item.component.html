@@ -1,3 +1,5 @@
-<a [color]="colour" [disabled]="(disabled | async) === true" [routerLink]="routerLink | async" mat-button>
-  <ng-content></ng-content>
-</a>
+<h1 class="app-nav-item">
+  <a [color]="colour" [disabled]="(disabled | async) === true" [routerLink]="routerLink | async" mat-button>
+    <mat-icon>{{ matIcon }}</mat-icon>
+  </a>
+</h1>
