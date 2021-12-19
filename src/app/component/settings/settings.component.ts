@@ -88,7 +88,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   deleteDocument(): void {
     this.prompt.confirm(
-      'Are you sure you want to delete this document?',
+      'Are you sure?',
       'Delete this document? This action cannot be undone.'
     ).subscribe(confirmed => {
       if (confirmed) {

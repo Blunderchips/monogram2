@@ -4,6 +4,7 @@ import { FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -22,6 +23,7 @@ import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
 import { environment } from '../environments';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ConfirmationDialogueComponent } from './component/confirmation-dialogue';
 import { DocumentComponent } from './component/document';
 import { DocumentListItemComponent } from './component/document-list-item';
 import { HomeComponent } from './component/home';
@@ -45,6 +47,7 @@ import { StorageState } from './storage';
     TapIconComponent,
     DocumentListItemComponent,
     NavItemComponent,
+    ConfirmationDialogueComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ import { StorageState } from './storage';
     MatIconModule,
     MatRippleModule,
     NgScrollbarModule,
+    MatDialogModule,
   ],
   providers: [
     FormGroupDirective,

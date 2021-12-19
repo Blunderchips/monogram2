@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Dialog } from '@capacitor/dialog';
-import { from, map, Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { map, Observable } from 'rxjs';
+import { ConfirmationDialogue, ConfirmationDialogueComponent } from '../../component/confirmation-dialogue';
 
 @Injectable({ providedIn: 'root' })
 export class PromptService {
 
+  constructor(private dialogue: MatDialog) {
+  }
+
   confirm(title: string, message: string): Observable<boolean> {
-    return from(Dialog.confirm({
-      title,
-      message,
-    })).pipe(
-      map(result => result.value)
-    );
+    return this.dialogue.open<ConfirmationDialogueComponent, ConfirmationDialogue, boolean>(ConfirmationDialogueComponent, {
+      data: {
+        title,
+        message,
+      }
+    }).afterClosed()
+      .pipe(
+        map(res => !!res)
+      );
   }
 
 }
