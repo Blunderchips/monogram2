@@ -4,7 +4,7 @@ import { FormsState } from '../forms';
 import { SetNewDocumentFormPristine, SetSettingsFormPristine } from '../forms/forms.actions';
 import { DateCompareService } from '../services/date-compare';
 import { SaveNewForm, SaveSettingsForm, SelectDocument } from './storage.actions';
-import { MnDocument, StorageStateModel } from './storage.model';
+import { Documents, MnDocument, StorageStateModel } from './storage.model';
 
 const STORAGE_STATE_TOKEN = new StateToken<StorageStateModel>('storage');
 
@@ -27,7 +27,7 @@ export class StorageState {
   }
 
   @Selector()
-  static documents(state: StorageStateModel): Array<MnDocument> {
+  static documents(state: StorageStateModel): Documents {
     return state.documents;
   }
 
@@ -49,7 +49,7 @@ export class StorageState {
     // todo validate form values
 
     const state = ctx.getState();
-    const documents: Array<MnDocument> = Array.isArray(state?.documents)
+    const documents: Documents = Array.isArray(state?.documents)
       ? [...ctx.getState().documents]   // copy of documents array
       : [];                             // new empty array
 
@@ -91,7 +91,7 @@ export class StorageState {
     // todo validate form values
 
     const state = ctx.getState();
-    const documents: Array<MnDocument> = Array.isArray(state?.documents)
+    const documents: Documents = Array.isArray(state?.documents)
       ? [...ctx.getState().documents]   // copy of documents array
       : [];                             // new empty array
 
