@@ -6,11 +6,9 @@
 
 </a>
 
-<div class="app-document-list-item__menu-button">
-  <button [matMenuTriggerFor]="menu" mat-icon-button>
-    <mat-icon>more_vert</mat-icon>
-  </button>
-</div>
+<button [matMenuTriggerFor]="menu" class="app-document-list-item__menu-button" mat-button>
+  <mat-icon>more_vert</mat-icon>
+</button>
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item>Item 1</button>
