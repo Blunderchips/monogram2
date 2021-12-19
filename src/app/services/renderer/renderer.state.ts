@@ -51,7 +51,7 @@ export class RendererState {
 
   @Action(RendererTick)
   tick(ctx: RendererStateContext, action: RendererTick): void {
-    const doc: MnDocument | null = this.store.selectSnapshot(StorageState.getSelectedDocument);
+    const doc: MnDocument | null = this.store.selectSnapshot(StorageState.selectedDocument);
     // console.debug({ doc });
 
     if (!doc) {
