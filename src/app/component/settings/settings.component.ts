@@ -22,14 +22,15 @@ export class SettingsComponent implements OnInit, OnDestroy {
   @Select(StorageState.selectedDocument) selectedDocument$: Observable<MnDocument>;
 
   id: string; // local copy of document ID
+
   /**
    * Document settings form control group.
    */
   settingsForm = new FormGroup({
-    wordsPerMinute: new FormControl(400),
-    chunkSize: new FormControl(3),
-    alignment: new FormControl(ALIGNMENTS[0], [Validators.required]),
-    weight: new FormControl(WEIGHTS[0], [Validators.required]),
+    wordsPerMinute: new FormControl(),
+    chunkSize: new FormControl(),
+    alignment: new FormControl(null, [Validators.required]),
+    weight: new FormControl(null, [Validators.required]),
   });
 
   constructor(private store: Store, private prompt: PromptService) {
@@ -50,16 +51,12 @@ export class SettingsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.selectedDocument$.pipe(
       take(1),
-    ).subscribe(document => {
-      if (document) {
-        this.settingsForm.patchValue({
-          wordsPerMinute: document.wordsPerMinute,
-          chunkSize: document.chunkSize,
-          alignment: document.alignment,
-          weight: document.weight,
-        })
-      }
-    });
+    ).subscribe(document => this.settingsForm.patchValue({
+      wordsPerMinute: document.wordsPerMinute || 400,
+      chunkSize: document.chunkSize || 3,
+      alignment: document.alignment || ALIGNMENTS[0],
+      weight: document.weight || WEIGHTS[0],
+    }));
 
     this.selectedDocument$.pipe(
       untilDestroyed(this),
