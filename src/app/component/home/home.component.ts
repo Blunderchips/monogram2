@@ -6,7 +6,7 @@ import { map, Observable } from 'rxjs';
 import { v4 as uuid4 } from 'uuid';
 import { DOCUMENT_SEARCH_FORM_STATE } from '../../forms';
 import { SetSearchFormPristine } from '../../forms/forms.actions';
-import { MnDocument, StorageState } from '../../storage';
+import { Documents, MnDocument, StorageState } from '../../storage';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +18,7 @@ export class HomeComponent {
   /**
    * List of documents from storage state.
    */
-  @Select(StorageState.documents) documentsList$: Observable<Array<MnDocument>>;
+  @Select(StorageState.documents) documentsList$: Observable<Documents>;
   /**
    * Document searchbar input element.
    */
@@ -42,7 +42,7 @@ export class HomeComponent {
     return !!this.searchForm.get('search')?.value || false;
   }
 
-  get documents$(): Observable<Array<MnDocument>> {
+  get documents$(): Observable<Documents> {
     const searchTerm: string | null = this.searchForm.get('search')?.value;
     return this.documentsList$.pipe(map(docs => this.#filterDocuments(docs, searchTerm)));
   }
@@ -61,7 +61,7 @@ export class HomeComponent {
   }
 
   // todo make a service & test, maybe use a pipe?
-  #filterDocuments(documents: Array<MnDocument>, searchTerm: string | null): Array<MnDocument> {
+  #filterDocuments(documents: Documents, searchTerm: string | null): Documents {
     if (!searchTerm || searchTerm.trim().length <= 0) {
       return documents; // no search term provided, return documents array as is
     }

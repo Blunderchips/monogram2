@@ -11,7 +11,9 @@ export interface MnDocument {
   weight: TextWeight;
 }
 
+export type Documents = Array<MnDocument>;
+
 export interface StorageStateModel {
-  documents: Array<MnDocument>;
+  documents: Documents;
   selectedDocument: string | null;
 }
