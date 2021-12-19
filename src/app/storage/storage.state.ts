@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Navigate } from '@ngxs/router-plugin';
 import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/store';
 import { FormsState } from '../forms';
 import { SetNewDocumentFormPristine, SetSettingsFormPristine } from '../forms/forms.actions';
 import { DateCompareService } from '../services/date-compare';
-import { SaveNewForm, SaveSettingsForm, SelectDocument } from './storage.actions';
+import { DeleteDocument, SaveNewForm, SaveSettingsForm, SelectDocument } from './storage.actions';
 import { Documents, MnDocument, StorageStateModel } from './storage.model';
 
 const STORAGE_STATE_TOKEN = new StateToken<StorageStateModel>('storage');
@@ -116,6 +117,25 @@ export class StorageState {
     ctx.dispatch([
       new SetSettingsFormPristine(),
     ]);
+  }
+
+  @Action(DeleteDocument)
+  deleteDocument(ctx: MnStateContext, action: DeleteDocument): void {
+
+    if (!action?.id) {
+      return; // todo handle better
+    }
+
+    // todo split out to util function
+    const state = ctx.getState();
+    const documents: Documents = Array.isArray(state?.documents)
+      ? [...ctx.getState().documents]   // copy of documents array
+      : [];                             // new empty array
+
+    // todo spit out & test
+    ctx.patchState({ documents: documents.filter(i => i.id !== action.id) });
+
+    ctx.dispatch(new Navigate(['/'])); // router user back to home page after document deletion
   }
 
 }

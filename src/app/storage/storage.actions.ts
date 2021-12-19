@@ -33,3 +33,15 @@ export class SaveSettingsForm {
   }
 
 }
+
+export class DeleteDocument {
+
+  static readonly type = '[Storage] delete document';
+
+  /**
+   * @param {string} id target document UUID
+   */
+  constructor(public id: string | null) {
+  }
+
+}

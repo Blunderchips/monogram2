@@ -5,7 +5,8 @@ import { Select, Store } from '@ngxs/store';
 import { debounceTime, distinctUntilChanged, Observable, take } from 'rxjs';
 import { FormsState, SETTINGS_FORM_FORM_STATE, SettingsForm } from '../../forms';
 import { ResetFormState } from '../../forms/forms.actions';
-import { MnDocument, SaveSettingsForm, StorageState } from '../../storage';
+import { PromptService } from '../../services/prompt';
+import { DeleteDocument, MnDocument, SaveSettingsForm, StorageState } from '../../storage';
 import { ALIGNMENTS, GetAlignmentLabel } from '../../text-align.enum';
 import { GetWeightLabel, WEIGHTS } from '../../text-weight.enum';
 
@@ -21,6 +22,18 @@ export class SettingsComponent implements OnInit, OnDestroy {
   @Select(StorageState.selectedDocument) selectedDocument$: Observable<MnDocument>;
 
   id: string; // local copy of document ID
+  /**
+   * Document settings form control group.
+   */
+  settingsForm = new FormGroup({
+    wordsPerMinute: new FormControl(400),
+    chunkSize: new FormControl(3),
+    alignment: new FormControl(ALIGNMENTS[0], [Validators.required]),
+    weight: new FormControl(WEIGHTS[0], [Validators.required]),
+  });
+
+  constructor(private store: Store, private prompt: PromptService) {
+  }
 
   get alignments(): TextAlignments {
     return ALIGNMENTS;
@@ -32,19 +45,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   get formName(): string {
     return SETTINGS_FORM_FORM_STATE;
-  }
-
-  /**
-   * Document settings form control group.
-   */
-  settingsForm = new FormGroup({
-    wordsPerMinute: new FormControl(400),
-    chunkSize: new FormControl(3),
-    alignment: new FormControl(ALIGNMENTS[0], [Validators.required]),
-    weight: new FormControl(WEIGHTS[0], [Validators.required]),
-  });
-
-  constructor(private store: Store) {
   }
 
   ngOnInit(): void {
@@ -63,7 +63,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     this.selectedDocument$.pipe(
       untilDestroyed(this),
-    ).subscribe(document => this.id = document.id);
+    ).subscribe(document => this.id = document?.id);
 
     this.#subscribeToChanges();
   }
@@ -84,6 +84,17 @@ export class SettingsComponent implements OnInit, OnDestroy {
    */
   getWeightLabel(weight: TextWeight): string {
     return GetWeightLabel(weight);
+  }
+
+  deleteDocument(): void {
+    this.prompt.confirm(
+      'Are you sure?',
+      'Delete this document? This action cannot be undone.'
+    ).subscribe(confirmed => {
+      if (confirmed) {
+        this.store.dispatch(new DeleteDocument(this.id));
+      }
+    })
   }
 
   #subscribeToChanges(): void {

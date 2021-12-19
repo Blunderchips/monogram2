@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>
+  {{ data.title }}
+</h2>
+
+<mat-dialog-content>
+  {{ data.message }}
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-evenly">
+  <!--  <button (click)="ref.close(false)" cdkFocusInitial color="primary" fxFlex mat-stroked-button>-->
+  <!--    No-->
+  <!--  </button>-->
+  <button (click)="ref.close(true)" color="warn" fxFlex mat-stroked-button>
+    Delete
+  </button>
+</mat-dialog-actions>
