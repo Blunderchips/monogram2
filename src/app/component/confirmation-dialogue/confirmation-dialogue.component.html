@@ -6,11 +6,11 @@
   {{ data.message }}
 </mat-dialog-content>
 
-<mat-dialog-actions>
-  <button (click)="ref.close(false)" cdkFocusInitial mat-stroked-button>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-evenly">
+  <button (click)="ref.close(false)" cdkFocusInitial color="primary" fxFlex mat-stroked-button>
     No
   </button>
-  <button (click)="ref.close(true)" mat-stroked-button>
+  <button (click)="ref.close(true)" color="warn" fxFlex mat-stroked-button>
     Yes
   </button>
 </mat-dialog-actions>
