@@ -5,7 +5,7 @@ import { Select, Store } from '@ngxs/store';
 import { debounceTime, distinctUntilChanged, Observable, take } from 'rxjs';
 import { FormsState, SETTINGS_FORM_FORM_STATE, SettingsForm } from '../../forms';
 import { ResetFormState } from '../../forms/forms.actions';
-import { MnDocument, SaveSettingsForm, StorageState } from '../../storage';
+import { DeleteDocument, MnDocument, SaveSettingsForm, StorageState } from '../../storage';
 import { ALIGNMENTS, GetAlignmentLabel } from '../../text-align.enum';
 import { GetWeightLabel, WEIGHTS } from '../../text-weight.enum';
 
@@ -21,19 +21,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
   @Select(StorageState.selectedDocument) selectedDocument$: Observable<MnDocument>;
 
   id: string; // local copy of document ID
-
-  get alignments(): TextAlignments {
-    return ALIGNMENTS;
-  }
-
-  get weights(): TextWeights {
-    return WEIGHTS;
-  }
-
-  get formName(): string {
-    return SETTINGS_FORM_FORM_STATE;
-  }
-
   /**
    * Document settings form control group.
    */
@@ -45,6 +32,18 @@ export class SettingsComponent implements OnInit, OnDestroy {
   });
 
   constructor(private store: Store) {
+  }
+
+  get alignments(): TextAlignments {
+    return ALIGNMENTS;
+  }
+
+  get weights(): TextWeights {
+    return WEIGHTS;
+  }
+
+  get formName(): string {
+    return SETTINGS_FORM_FORM_STATE;
   }
 
   ngOnInit(): void {
@@ -84,6 +83,10 @@ export class SettingsComponent implements OnInit, OnDestroy {
    */
   getWeightLabel(weight: TextWeight): string {
     return GetWeightLabel(weight);
+  }
+
+  deleteDocument(): void {
+    this.store.dispatch(new DeleteDocument(this.id));
   }
 
   #subscribeToChanges(): void {
