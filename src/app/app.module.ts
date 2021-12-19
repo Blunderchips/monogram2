@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserModule } from '@angular/platform-browser';
@@ -76,6 +77,7 @@ import { StorageState } from './storage';
     MatIconModule,
     MatRippleModule,
     NgScrollbarModule,
+    MatMenuModule,
   ],
   providers: [
     FormGroupDirective,

@@ -1,5 +1,16 @@
 <a [routerLink]="['/', 'reader', document.id]" class="app-document-list-item" mat-list-item>
+
   <mat-icon mat-list-icon>folder</mat-icon>
   <div mat-line>{{ document.name }}</div>
   <div mat-line>{{ document.updated | date: 'short' }}</div>
+
 </a>
+
+<button [matMenuTriggerFor]="menu" class="app-document-list-item__menu-button" mat-button>
+  <mat-icon>more_vert</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
