@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { v4 as uuid4 } from 'uuid';
 import { DOCUMENT_SEARCH_FORM_STATE } from '../../forms';
 import { SetSearchFormPristine } from '../../forms/forms.actions';
@@ -15,8 +15,10 @@ import { MnDocument, StorageState } from '../../storage';
 })
 export class HomeComponent {
 
-  @Select(StorageState.documents) documents: Observable<Array<MnDocument>>;
-
+  /**
+   * List of documents from storage state.
+   */
+  @Select(StorageState.documents) documentsList$: Observable<Array<MnDocument>>;
   /**
    * Document searchbar input element.
    */
@@ -40,6 +42,11 @@ export class HomeComponent {
     return !!this.searchForm.get('search')?.value || false;
   }
 
+  get documents$(): Observable<Array<MnDocument>> {
+    const searchTerm: string | null = this.searchForm.get('search')?.value;
+    return this.documentsList$.pipe(map(docs => this.#filterDocuments(docs, searchTerm)));
+  }
+
   generateNewDocumentId(): Promise<boolean> {
     return this.router.navigateByUrl(`/document/${uuid4()}`); // todo try/catch exception
   }
@@ -51,6 +58,14 @@ export class HomeComponent {
     this.searchForm.get('search')?.setValue(null);
     this.searchInput.nativeElement.blur();
     this.store.dispatch(new SetSearchFormPristine());
+  }
+
+  // todo make a service & test, maybe use a pipe?
+  #filterDocuments(documents: Array<MnDocument>, searchTerm: string | null): Array<MnDocument> {
+    if (!searchTerm || searchTerm.trim().length <= 0) {
+      return documents; // no search term provided, return documents array as is
+    }
+    return documents.filter(i => i.name.trim().toLowerCase().includes(searchTerm.trim().toLowerCase()));
   }
 
 }

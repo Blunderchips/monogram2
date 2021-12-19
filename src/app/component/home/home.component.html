@@ -26,7 +26,7 @@
     <mat-divider></mat-divider>
     <ng-scrollbar>
       <mat-nav-list class="app-home__document-list__items" fxFlex>
-        <app-document-list-item *ngFor="let i of documents | async" [document]="i"></app-document-list-item>
+        <app-document-list-item *ngFor="let i of documents$ | async" [document]="i"></app-document-list-item>
       </mat-nav-list>
     </ng-scrollbar>
   </span>
