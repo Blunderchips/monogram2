@@ -3,7 +3,12 @@ import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
 
+/**
+ * Angular router link path.
+ */
 export type RouterLink = Array<any> | null;
+
+// todo: null checks on inputs
 
 @Component({
   selector: 'app-nav-item',
@@ -20,6 +25,10 @@ export class NavItemComponent {
    * @default false
    */
   @Input() disabled = of(false);
+  /**
+   * Material icon to use. Cannot be null.
+   */
+  @Input() matIcon: string;
 
   constructor(private router: Router) {
   }
