@@ -5,15 +5,15 @@
   <div class="app-component__footer">
     <mat-divider></mat-divider>
     <nav class="app-component__footer__items">
-      <app-nav-item [link]="['/', 'home']" fxFlex="25" matIcon="home"></app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'reader', selectedDocument | async]" fxFlex="25"
-                    matIcon="auto_stories">
+      <app-nav-item [fxFlex]="tabButtonWidth" [link]="['/', 'home']" matIcon="home"></app-nav-item>
+      <app-nav-item [disabled]="hasSelectedDocument" [fxFlex]="tabButtonWidth"
+                    [link]="['/', 'reader', selectedDocument | async]" matIcon="auto_stories">
       </app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'document', selectedDocument | async]" fxFlex="25"
-                    matIcon="article">
+      <app-nav-item [disabled]="hasSelectedDocument" [fxFlex]="tabButtonWidth"
+                    [link]="['/', 'document', selectedDocument | async]" matIcon="article">
       </app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [link]="['/', 'settings', selectedDocument | async]" fxFlex="25"
-                    matIcon="settings"></app-nav-item>
+      <app-nav-item [disabled]="hasSelectedDocument" [fxFlex]="tabButtonWidth"
+                    [link]="['/', 'settings', selectedDocument | async]" matIcon="settings"></app-nav-item>
     </nav>
   </div>
 
