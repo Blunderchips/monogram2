@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/store';
-import { ChunkerService } from '../../services/chunker';
 import { MnDocument, StorageState } from '../../storage';
+import { ChunkerService } from '../chunker';
 import { RendererStateModel } from './render.model';
 import { RendererTick, ToggleRunning } from './renderer.actions';
+import { RendererService } from './renderer.service';
 
 /**
  * Render NGXS state token.
@@ -26,6 +27,7 @@ export class RendererState {
   constructor(
     private chunker: ChunkerService,
     private store: Store,
+    private renderer: RendererService,
   ) {
   }
 
@@ -51,11 +53,16 @@ export class RendererState {
 
   @Action(RendererTick)
   tick(ctx: RendererStateContext, action: RendererTick): void {
+
     const doc: MnDocument | null = this.store.selectSnapshot(StorageState.selectedDocument);
     // console.debug({ doc });
 
     if (!doc) {
-      return; // todo handle better
+      ctx.patchState({
+        chunk: ChunkerService.NULL_CHUNK,
+      });
+      this.renderer.stop();
+      return;
     }
 
     const {
@@ -68,6 +75,11 @@ export class RendererState {
 
     const newChunk = this.chunker.chunk(doc.textInput, chunkSize, 0, period * chunkSize);
     ctx.patchState({ chunk: newChunk });
+
+    if (!newChunk?.hasNextChunk && newChunk?.chunk?.length <= 0) {
+      this.renderer.stop(); // end of document
+    }
+
   }
 
 }
