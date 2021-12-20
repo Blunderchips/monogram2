@@ -59,7 +59,8 @@ import { StorageState } from './storage';
       RendererState,
     ], { developmentMode: !environment.production }),
     NgxsReduxDevtoolsPluginModule.forRoot({
-      name: 'Monogram',
+      name: environment.applicationName,
+      disabled: environment.production,
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({

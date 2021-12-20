@@ -8,6 +8,7 @@ import { Environment } from './environment.model';
  * Local development environment configuration.
  */
 export const environment: Environment = {
+  applicationName: 'monogram development',
   production: false
 };
 
