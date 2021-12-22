@@ -1,7 +1,4 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Build Angular app
+name: Lint Angular app
 
 on:
   push:
@@ -41,4 +38,4 @@ jobs:
 
       - run: yarn install --no-progress --frozen-lock
 
-      - run: yarn run build
+      - run: yarn run lint
