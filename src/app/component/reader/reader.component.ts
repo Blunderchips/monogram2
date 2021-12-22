@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { Select } from '@ngxs/store';
 import { map, Observable } from 'rxjs';
-import { RendererState, ToggleRunning } from '../../services/renderer';
+import { RendererService, RendererState } from '../../services/renderer';
 import { MnDocument, StorageState } from '../../storage';
 
 @Component({
@@ -16,7 +16,7 @@ export class ReaderComponent {
   @Select(StorageState.selectedDocument) document$: Observable<MnDocument>;
 
   constructor(
-    private store: Store,
+    private renderer: RendererService,
   ) {
   }
 
