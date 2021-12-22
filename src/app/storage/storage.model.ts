@@ -6,6 +6,9 @@ export interface MnDocument {
   textInput: string;
   // settings
   wordsPerMinute: number;
+  /**
+   * Number of words to render.
+   */
   chunkSize: number;
   alignment: TextAlignment;
   weight: TextWeight;
