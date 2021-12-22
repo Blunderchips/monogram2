@@ -9,3 +9,14 @@
 .page {
   height: 100%; // so that the ripple goes up against the divider
 }
+
+.app-reader {
+
+  &__text {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+  }
+
+}
