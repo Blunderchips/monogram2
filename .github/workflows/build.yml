@@ -39,6 +39,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      # https://github.com/actions/cache/blob/main/examples.md#java---gradle
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
       - run: yarn install --no-progress --frozen-lock
 
       - run: yarn run build
