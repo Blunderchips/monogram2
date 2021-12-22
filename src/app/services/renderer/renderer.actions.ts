@@ -13,3 +13,7 @@ export class RendererTick {
   }
 
 }
+
+export class StopRenderer {
+  static readonly type = '[Renderer] stop current rendering';
+}

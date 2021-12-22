@@ -3,7 +3,7 @@ import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/
 import { MnDocument, StorageState } from '../../storage';
 import { ChunkerService } from '../chunker';
 import { RendererStateModel } from './render.model';
-import { RendererTick, ToggleRunning } from './renderer.actions';
+import { RendererTick, StopRenderer, ToggleRunning } from './renderer.actions';
 import { RendererService } from './renderer.service';
 
 /**
@@ -76,6 +76,11 @@ export class RendererState {
       this.#stop(ctx); // end of document
     }
 
+  }
+
+  @Action(StopRenderer)
+  stopRenderer(ctx: RendererStateContext): void {
+    this.#stop(ctx);
   }
 
   #start(_ctx: RendererStateContext): void {

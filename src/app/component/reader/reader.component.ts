@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { map, Observable } from 'rxjs';
-import { RendererState, ToggleRunning } from '../../services/renderer';
+import { RendererState, StopRenderer, ToggleRunning } from '../../services/renderer';
 import { MnDocument, StorageState } from '../../storage';
 
 @Component({
@@ -9,7 +9,7 @@ import { MnDocument, StorageState } from '../../storage';
   templateUrl: './reader.component.html',
   styleUrls: ['./reader.component.scss']
 })
-export class ReaderComponent {
+export class ReaderComponent implements OnDestroy {
 
   @Select(RendererState.isRunning) isRunning$: Observable<boolean>;
   @Select(RendererState.cursor) cursor$: Observable<string>;
@@ -26,6 +26,10 @@ export class ReaderComponent {
 
   get textWeight(): Observable<TextWeight> {
     return this.document$.pipe(map(doc => doc?.weight || 'mat-display-4'));
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(new StopRenderer());
   }
 
   click(): void {
