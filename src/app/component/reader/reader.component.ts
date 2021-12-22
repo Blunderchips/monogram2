@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { map, Observable } from 'rxjs';
-import { RendererState, StopRenderer, ToggleRunning } from '../../services/renderer';
+import { RendererState, StopRenderer, ToggleRenderer } from '../../services/renderer';
 import { MnDocument, StorageState } from '../../storage';
 
 @Component({
@@ -33,7 +33,7 @@ export class ReaderComponent implements OnDestroy {
   }
 
   click(): void {
-    this.store.dispatch(new ToggleRunning());
+    this.store.dispatch(new ToggleRenderer());
   }
 
 }

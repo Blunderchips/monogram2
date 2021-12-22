@@ -1,4 +1,4 @@
-export class ToggleRunning {
+export class ToggleRenderer {
   static readonly type = '[Renderer] toggle running state';
 }
 

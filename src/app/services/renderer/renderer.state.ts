@@ -3,7 +3,7 @@ import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/
 import { MnDocument, StorageState } from '../../storage';
 import { ChunkerService } from '../chunker';
 import { RendererStateModel } from './render.model';
-import { RendererTick, StopRenderer, ToggleRunning } from './renderer.actions';
+import { RendererTick, StopRenderer, ToggleRenderer } from './renderer.actions';
 import { RendererService } from './renderer.service';
 
 /**
@@ -40,7 +40,7 @@ export class RendererState {
     return state.chunk?.chunk !== '';
   }
 
-  @Action(ToggleRunning)
+  @Action(ToggleRenderer)
   toggleRunning(ctx: RendererStateContext): void {
     const isRunning: boolean = this.store.selectSnapshot(RendererState.isRunning);
     if (isRunning) {
