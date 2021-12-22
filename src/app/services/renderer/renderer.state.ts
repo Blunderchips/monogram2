@@ -3,7 +3,7 @@ import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/
 import { MnDocument, StorageState } from '../../storage';
 import { ChunkerService } from '../chunker';
 import { RendererStateModel } from './render.model';
-import { RendererTick, ToggleRunning } from './renderer.actions';
+import { RendererTick, StopRenderer, ToggleRenderer } from './renderer.actions';
 import { RendererService } from './renderer.service';
 
 /**
@@ -40,14 +40,14 @@ export class RendererState {
     return state.chunk?.chunk !== '';
   }
 
-  @Action(ToggleRunning)
-  toggleRunning(_ctx: RendererStateContext): void {
-    // const {
-    //   isRunning,
-    // } = ctx.getState();
-    // ctx.patchState({
-    //   isRunning: !isRunning,
-    // });
+  @Action(ToggleRenderer)
+  toggleRunning(ctx: RendererStateContext): void {
+    const isRunning: boolean = this.store.selectSnapshot(RendererState.isRunning);
+    if (isRunning) {
+      this.#stop(ctx);
+    } else {
+      this.#start(ctx);
+    }
   }
 
   @Action(RendererTick)
@@ -57,10 +57,7 @@ export class RendererState {
     // console.debug({ doc });
 
     if (!doc) {
-      ctx.patchState({
-        chunk: ChunkerService.NULL_CHUNK,
-      });
-      this.renderer.stop();
+      this.#stop(ctx);
       return;
     }
 
@@ -76,9 +73,25 @@ export class RendererState {
     ctx.patchState({ chunk: newChunk });
 
     if (!newChunk?.hasNextChunk && newChunk?.chunk?.length <= 0) {
-      this.renderer.stop(); // end of document
+      this.#stop(ctx); // end of document
     }
 
+  }
+
+  @Action(StopRenderer)
+  stopRenderer(ctx: RendererStateContext): void {
+    this.#stop(ctx);
+  }
+
+  #start(_ctx: RendererStateContext): void {
+    this.renderer.start();
+  }
+
+  #stop(ctx: RendererStateContext): void {
+    ctx.patchState({
+      chunk: ChunkerService.NULL_CHUNK,
+    });
+    this.renderer.stop();
   }
 
 }

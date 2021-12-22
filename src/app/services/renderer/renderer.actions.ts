@@ -1,4 +1,4 @@
-export class ToggleRunning {
+export class ToggleRenderer {
   static readonly type = '[Renderer] toggle running state';
 }
 
@@ -12,4 +12,8 @@ export class RendererTick {
   constructor(public period: number) {
   }
 
+}
+
+export class StopRenderer {
+  static readonly type = '[Renderer] stop current rendering';
 }
