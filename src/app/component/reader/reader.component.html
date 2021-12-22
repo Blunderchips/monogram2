@@ -3,7 +3,7 @@
 </div>
 
 <ng-template #isRunning>
-  <span class="unselectable">
+  <span [ngClass]="[ (textAlignment | async) || '', (textWeight | async) || '' ]" class="unselectable app-reader__text">
     {{ cursor$ | async }}
   </span>
 </ng-template>
