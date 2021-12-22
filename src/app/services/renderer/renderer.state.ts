@@ -18,7 +18,6 @@ type RendererStateContext = StateContext<RendererStateModel>;
   defaults: {
     cursor: null,
     chunk: ChunkerService.NULL_CHUNK,
-    chunkSize: 4,
   }
 })
 @Injectable()
@@ -71,7 +70,7 @@ export class RendererState {
 
     const {
       chunkSize,
-    } = ctx.getState();
+    } = doc;
 
     const newChunk = this.chunker.chunk(doc.textInput, chunkSize, 0, period * chunkSize);
     ctx.patchState({ chunk: newChunk });
