@@ -42,13 +42,13 @@ export class RendererState {
   }
 
   @Action(ToggleRunning)
-  toggleRunning(_ctx: RendererStateContext): void {
-    // const {
-    //   isRunning,
-    // } = ctx.getState();
-    // ctx.patchState({
-    //   isRunning: !isRunning,
-    // });
+  toggleRunning(ctx: RendererStateContext): void {
+    const isRunning: boolean = this.store.selectSnapshot(RendererState.isRunning);
+    if (isRunning) {
+      this.#stop(ctx);
+    } else {
+      this.#start(ctx);
+    }
   }
 
   @Action(RendererTick)
@@ -58,10 +58,7 @@ export class RendererState {
     // console.debug({ doc });
 
     if (!doc) {
-      ctx.patchState({
-        chunk: ChunkerService.NULL_CHUNK,
-      });
-      this.renderer.stop();
+      this.#stop(ctx);
       return;
     }
 
@@ -77,9 +74,20 @@ export class RendererState {
     ctx.patchState({ chunk: newChunk });
 
     if (!newChunk?.hasNextChunk && newChunk?.chunk?.length <= 0) {
-      this.renderer.stop(); // end of document
+      this.#stop(ctx); // end of document
     }
 
+  }
+
+  #start(_ctx: RendererStateContext): void {
+    this.renderer.start();
+  }
+
+  #stop(ctx: RendererStateContext): void {
+    ctx.patchState({
+      chunk: ChunkerService.NULL_CHUNK,
+    });
+    this.renderer.stop();
   }
 
 }

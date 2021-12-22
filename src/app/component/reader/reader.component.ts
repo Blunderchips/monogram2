@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { RendererService, RendererState } from '../../services/renderer';
+import { RendererState, ToggleRunning } from '../../services/renderer';
 
 @Component({
   selector: 'app-reader',
@@ -15,12 +15,11 @@ export class ReaderComponent {
 
   constructor(
     private store: Store,
-    private renderer: RendererService,
   ) {
   }
 
   click(): void {
-    this.renderer.start()
+    this.store.dispatch(new ToggleRunning());
   }
 
 }

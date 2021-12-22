@@ -3,9 +3,7 @@ import { Store } from '@ngxs/store';
 import { interval, Observable, Subscription, tap } from 'rxjs';
 import { RendererTick } from './renderer.actions';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class RendererService implements OnDestroy {
 
   /**
