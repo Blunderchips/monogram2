@@ -27,8 +27,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
    * Document settings form control group.
    */
   settingsForm = new FormGroup({
-    wordsPerMinute: new FormControl(),
-    chunkSize: new FormControl(),
+    wordsPerMinute: new FormControl(Number.NaN, Validators.min(1)),
+    chunkSize: new FormControl(Number.NaN, Validators.min(1)),
     alignment: new FormControl(null, [Validators.required]),
     weight: new FormControl(null, [Validators.required]),
   });
@@ -102,7 +102,11 @@ export class SettingsComponent implements OnInit, OnDestroy {
         distinctUntilChanged(),
         untilDestroyed(this),
       )
-      .subscribe(() => this.store.dispatch(new SaveSettingsForm(this.id)));
+      .subscribe(() => {
+        if (this.settingsForm.valid) {
+          this.store.dispatch(new SaveSettingsForm(this.id));
+        }
+      });
   }
 
 }
