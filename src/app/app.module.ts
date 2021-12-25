@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
@@ -81,9 +81,6 @@ import { StorageState } from './storage';
     MatRippleModule,
     NgScrollbarModule,
     MatDialogModule,
-  ],
-  providers: [
-    FormGroupDirective,
   ],
   bootstrap: [
     AppComponent,
