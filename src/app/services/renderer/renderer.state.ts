@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, StateToken, Store } from '@ngxs/store';
+import { isEqual } from 'lodash-es';
 import { MnDocument, StorageState } from '../../storage';
 import { ChunkerService } from '../chunker';
 import { RendererStateModel } from './render.model';
@@ -39,11 +40,7 @@ export class RendererState {
 
   @Selector()
   static isRunning(state: RendererStateModel): boolean {
-    if (state.chunk?.chunk !== '') {
-      return true;
-    } else {
-      return state.chunk?.hasNextSegment === true;
-    }
+    return !isEqual(state?.chunk, ChunkerService.NULL_CHUNK);
   }
 
   @Action(ToggleRenderer)
