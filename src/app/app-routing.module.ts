@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DocumentComponent } from './component/document';
 import { HomeComponent } from './component/home';
-import { ReaderComponent } from './component/reader';
+import { DisplayComponent } from './component/display';
 import { SettingsComponent } from './component/settings';
 
 const routes: Routes = [
@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'reader/:id',
-    component: ReaderComponent,
+    component: DisplayComponent,
   },
 ];
 
