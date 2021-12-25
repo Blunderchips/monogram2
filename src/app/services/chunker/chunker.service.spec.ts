@@ -56,72 +56,75 @@ describe('ChunkerService', () => {
 
   it('should extract a clamped chunk', () => {
     const expected: MnChunk = {
-      chunk: 'hello.',
-      hasNextChunk: false,
+      chunk: 'hello.', hasNextChunk: false, hasNextSegment: true,
     }
     expect(service.chunk('hello. world.', 3, 0)).toEqual(expected);
   });
 
   it('should process a sub-chunk', () => {
     const expected: MnChunk = {
-      chunk: 'hello',
-      hasNextChunk: true,
+      chunk: 'hello', hasNextChunk: true, hasNextSegment: true,
     }
     expect(service.chunk('hello hello. world.', 1, 0)).toEqual(expected);
   });
 
   it('should process chunk sizes', () => {
     const expected: MnChunk = {
-      chunk: 'hello world.',
-      hasNextChunk: false,
+      chunk: 'hello world.', hasNextChunk: false, hasNextSegment: true,
     }
     expect(service.chunk('hello world. world.', 2, 0)).toEqual(expected);
   });
 
   it('should process segments', () => {
     const expected: MnChunk = {
-      chunk: 'world.',
-      hasNextChunk: false,
+      chunk: 'world.', hasNextChunk: false, hasNextSegment: false,
     }
     expect(service.chunk('hello world. world.', 1, 1)).toEqual(expected);
   });
 
   it('should process cursors', () => {
     const expected: MnChunk = {
-      chunk: 'two.',
-      hasNextChunk: false,
+      chunk: 'two.', hasNextChunk: false, hasNextSegment: true,
     }
     expect(service.chunk('one two. three.', 2, 0, 1)).toEqual(expected);
   });
 
-  it('should process offset overflow', () => {
-    expect(service.chunk('one two. three.', 2, 0, 3)).toEqual(ChunkerService.NULL_CHUNK);
+  it('should process offset overflow with chunks', () => {
+    expect(service.chunk('one two. three.', 2, 0, 3)).toEqual({
+      chunk: '', hasNextChunk: false, hasNextSegment: true, // testing again segment zero so it does have another segment
+    });
   });
 
   it('should process offsets & chunk size', () => {
     const expected: MnChunk = {
-      chunk: 'this and this',
-      hasNextChunk: true,
+      chunk: 'this and this', hasNextChunk: true, hasNextSegment: false,
     }
-    expect(service.chunk(
-      'hello world this test this and this I am fine',
-      3,
-      0,
-      4,
-    )).toEqual(expected);
+    expect(service.chunk('hello world this test this and this I am fine', 3, 0, 4,)).toEqual(expected);
   });
 
   it('should process offsets & chunk size', () => {
     const expected: MnChunk = {
-      chunk: '5 6 7 8',
-      hasNextChunk: false,
+      chunk: '5 6 7 8', hasNextChunk: false, hasNextSegment: false,
     }
-    expect(service.chunk(
-      '1 2 3 4 5 6 7 8',
-      5,
-      0,
-      4,
-    )).toEqual(expected);
+    expect(service.chunk('1 2 3 4 5 6 7 8', 5, 0, 4,)).toEqual(expected);
+  });
+
+  it('should process next segments when true', () => {
+    const result = service.chunk('hello world. world.', 1, 0);
+    expect(result.hasNextSegment).toBeTrue();
+  });
+
+  it('should process next segments when there is none', () => {
+    const result = service.chunk('hello world. world.', 1, 1);
+    expect(result.hasNextSegment).toBeFalse();
+  });
+
+  it('should handle segment overflow', () => {
+    expect(service.chunk('hello world. world.', 1, 2)).toEqual(ChunkerService.NULL_CHUNK);
+  });
+
+  it('should handle segment overflow (extreme case)', () => {
+    expect(service.chunk('hello world. world.', 1, 110)).toEqual(ChunkerService.NULL_CHUNK);
   });
 
 });
