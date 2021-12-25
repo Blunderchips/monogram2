@@ -4,6 +4,7 @@ import { SentenceTokenizerService } from '../sentence-tokenizer';
 export interface MnChunk {
   chunk: string;
   hasNextChunk: boolean;
+  hasNextSegment: boolean;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -12,6 +13,7 @@ export class ChunkerService {
   static readonly NULL_CHUNK: MnChunk = {
     chunk: '',
     hasNextChunk: false,
+    hasNextSegment: false,
   }
 
   constructor(private splitter: SentenceTokenizerService) {
@@ -23,24 +25,27 @@ export class ChunkerService {
       return ChunkerService.NULL_CHUNK;
     }
     const split = this.splitter.split(base);
-    if (split.length <= 0 || segment > split.length) {
+    const numSegments = split.length;
+    if (split.length <= 0 || segment >= numSegments) {
       // console.debug('Invalid split array.', split.length);
       return ChunkerService.NULL_CHUNK;
     }
-    return this.extract(base, split, chunkSize, segment, offset);
+    return this.extract(base, split, chunkSize, segment, numSegments, offset);
   }
 
-  extract(base: string, split: Array<string>, chunkSize: number, segment: number, offset = 0, cursor = 0, result = ''): MnChunk {
+  extract(base: string, split: Array<string>, chunkSize: number, segment: number, numSegments: number, offset = 0, cursor = 0, result = ''): MnChunk {
     const target = split[segment].split(' ');
     if (target.length <= cursor + offset) {
       return {
         chunk: result,
         hasNextChunk: false,
+        hasNextSegment: segment < numSegments - 1,
       };
     } else if (chunkSize <= cursor) {
       return {
         chunk: result,
         hasNextChunk: true,
+        hasNextSegment: segment < numSegments - 1,
       };
     }
     if (result?.trim().length !== 0) {
@@ -48,7 +53,7 @@ export class ChunkerService {
     } else {
       result = target[cursor + offset]; // init on first pass
     }
-    return this.extract(base, split, chunkSize, segment, offset, ++cursor, result);
+    return this.extract(base, split, chunkSize, segment, numSegments, offset, ++cursor, result);
   }
 
 }
