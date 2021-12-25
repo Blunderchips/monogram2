@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
-import { ReaderComponent } from './reader.component';
+import { DisplayComponent } from './display.component';
 
-describe('ReaderComponent', () => {
+describe('DisplayComponent', () => {
 
-  let component: ReaderComponent;
-  let fixture: ComponentFixture<ReaderComponent>;
+  let component: DisplayComponent;
+  let fixture: ComponentFixture<DisplayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        ReaderComponent
+        DisplayComponent
       ],
       imports: [
         NgxsModule.forRoot(),
@@ -19,7 +19,7 @@ describe('ReaderComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReaderComponent);
+    fixture = TestBed.createComponent(DisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
