@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
+import { App } from '@capacitor/app';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Select, Store } from '@ngxs/store';
 import { map, Observable } from 'rxjs';
@@ -11,7 +12,7 @@ import { SelectDocument, StorageState } from './storage';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   @Select(StorageState.selectedDocumentId) selectedDocument: Observable<string | null>
 
@@ -42,6 +43,10 @@ export class AppComponent implements OnInit {
         this.store.dispatch(new SelectDocument(id));
       }
     });
+  }
+
+  async ngOnDestroy(): Promise<void> {
+    await App.removeAllListeners();
   }
 
   getDocumentId(route: ActivatedRouteSnapshot): string | null {
