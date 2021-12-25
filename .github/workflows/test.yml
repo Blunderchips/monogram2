@@ -38,4 +38,4 @@ jobs:
 
       - run: yarn install --no-progress --frozen-lock
 
-      - run: yarn run build
+      - run: yarn run test
