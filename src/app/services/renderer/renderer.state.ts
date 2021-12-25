@@ -13,10 +13,12 @@ const RENDERER_STATE_TOKEN = new StateToken<RendererStateModel>('renderer');
 
 type RendererStateContext = StateContext<RendererStateModel>;
 
+// noinspection JSMethodCanBeStatic
 @State<RendererStateModel>({
   name: RENDERER_STATE_TOKEN,
   defaults: {
-    cursor: null,
+    segment: 0,
+    cursor: 0,
     chunk: ChunkerService.NULL_CHUNK,
   }
 })
@@ -37,7 +39,11 @@ export class RendererState {
 
   @Selector()
   static isRunning(state: RendererStateModel): boolean {
-    return state.chunk?.chunk !== '';
+    if (state.chunk?.chunk !== '') {
+      return true;
+    } else {
+      return state.chunk?.hasNextSegment === true;
+    }
   }
 
   @Action(ToggleRenderer)
@@ -51,7 +57,7 @@ export class RendererState {
   }
 
   @Action(RendererTick)
-  tick(ctx: RendererStateContext, action: RendererTick): void {
+  tick(ctx: RendererStateContext, _action: RendererTick): void {
 
     const doc: MnDocument | null = this.store.selectSnapshot(StorageState.selectedDocument);
     // console.debug({ doc });
@@ -62,18 +68,27 @@ export class RendererState {
     }
 
     const {
-      period,
-    } = action;
-
-    const {
       chunkSize,
     } = doc;
 
-    const newChunk = this.chunker.chunk(doc.textInput, chunkSize, 0, period * chunkSize);
-    ctx.patchState({ chunk: newChunk });
+    const {
+      cursor,
+      segment,
+    } = ctx.getState();
+
+    const newChunk = this.chunker.chunk(doc.textInput, chunkSize, segment, cursor * chunkSize);
+    ctx.patchState({ chunk: newChunk, cursor: cursor + 1 });
 
     if (!newChunk?.hasNextChunk && newChunk?.chunk?.length <= 0) {
-      this.#stop(ctx); // end of document
+      if (newChunk?.hasNextSegment) {
+        ctx.patchState({
+          cursor: 0, // reset for start of new segment
+          segment: segment + 1,
+        })
+        ctx.dispatch(new RendererTick(0)); // refresh renderer to display first chunk of the new segment
+      } else {
+        this.#stop(ctx); // end of document
+      }
     }
 
   }
@@ -83,15 +98,22 @@ export class RendererState {
     this.#stop(ctx);
   }
 
-  #start(_ctx: RendererStateContext): void {
+  #start(ctx: RendererStateContext): void {
+    this.#reset(ctx);
     this.renderer.start();
   }
 
   #stop(ctx: RendererStateContext): void {
+    this.#reset(ctx);
+    this.renderer.stop();
+  }
+
+  #reset(ctx: RendererStateContext):void {
     ctx.patchState({
       chunk: ChunkerService.NULL_CHUNK,
+      cursor: 0,
+      segment: 0,
     });
-    this.renderer.stop();
   }
 
 }

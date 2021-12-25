@@ -4,7 +4,11 @@ export interface RendererStateModel {
   /**
    * Current chunker index.
    */
-  cursor: string | null;
+  cursor: number;
+  /**
+   * Current segment index.
+   */
+  segment: number;
   /**
    * Current chunk status.
    */
