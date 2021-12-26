@@ -98,6 +98,7 @@ export class RendererState {
   #start(ctx: RendererStateContext): void {
     this.#reset(ctx);
     this.renderer.start();
+    ctx.dispatch(new RendererTick(0)); // bootstrap tick
   }
 
   #stop(ctx: RendererStateContext): void {
@@ -105,7 +106,7 @@ export class RendererState {
     this.renderer.stop();
   }
 
-  #reset(ctx: RendererStateContext):void {
+  #reset(ctx: RendererStateContext): void {
     ctx.patchState({
       chunk: ChunkerService.NULL_CHUNK,
       cursor: 0,

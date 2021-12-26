@@ -5,11 +5,11 @@ import { RendererState, StopRenderer, ToggleRenderer } from '../../services/rend
 import { MnDocument, StorageState } from '../../storage';
 
 @Component({
-  selector: 'app-reader',
-  templateUrl: './reader.component.html',
-  styleUrls: ['./reader.component.scss']
+  selector: 'app-display',
+  templateUrl: './display.component.html',
+  styleUrls: ['./display.component.scss']
 })
-export class ReaderComponent implements OnDestroy {
+export class DisplayComponent implements OnDestroy {
 
   @Select(RendererState.isRunning) isRunning$: Observable<boolean>;
   @Select(RendererState.cursor) cursor$: Observable<string>;

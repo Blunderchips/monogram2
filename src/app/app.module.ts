@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
@@ -24,11 +24,11 @@ import { environment } from '../environments';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConfirmationDialogueComponent } from './component/confirmation-dialogue';
+import { DisplayComponent } from './component/display';
 import { DocumentComponent } from './component/document';
 import { DocumentListItemComponent } from './component/document-list-item';
 import { HomeComponent } from './component/home';
 import { NavItemComponent } from './component/nav-item';
-import { ReaderComponent } from './component/reader';
 import { SettingsComponent } from './component/settings';
 import { TapIconComponent } from './component/tap-icon';
 import { TextInputComponent } from './component/text-input';
@@ -43,7 +43,7 @@ import { StorageState } from './storage';
     HomeComponent,
     SettingsComponent,
     DocumentComponent,
-    ReaderComponent,
+    DisplayComponent,
     TapIconComponent,
     DocumentListItemComponent,
     NavItemComponent,
@@ -81,9 +81,6 @@ import { StorageState } from './storage';
     MatRippleModule,
     NgScrollbarModule,
     MatDialogModule,
-  ],
-  providers: [
-    FormGroupDirective,
   ],
   bootstrap: [
     AppComponent,
