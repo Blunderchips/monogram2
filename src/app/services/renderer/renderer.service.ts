@@ -1,13 +1,15 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { interval, Observable, Subscription, tap } from 'rxjs';
+import { round } from 'lodash-es';
+import { interval, Observable, of, Subscription, tap } from 'rxjs';
+import { MnDocument, StorageState } from '../../storage';
 import { RendererTick } from './renderer.actions';
 
 @Injectable({ providedIn: 'root' })
 export class RendererService implements OnDestroy {
 
   /**
-   * Renderer subscription.
+   * Renderer interval subscription.
    *
    * @private
    */
@@ -39,8 +41,20 @@ export class RendererService implements OnDestroy {
     this.ticker = null;
   }
 
-  #newTicket(): Observable<number> {
-    return interval(0.5 * 1000).pipe(tap(period => this.store.dispatch(new RendererTick(period))));
+  wordsPerMinuteToMilliseconds(wordsPerMinute: number): number {
+    if (!wordsPerMinute || wordsPerMinute <= 0) {
+      return 0;
+    }
+    return round((60 / wordsPerMinute) * 1000, 2);
+  }
+
+  #newTicket(): Observable<number | null> {
+    const doc: MnDocument | null = this.store.selectSnapshot(StorageState.selectedDocument);
+    if (!doc) {
+      return of(null);
+    }
+    const wordsPerMinute: number = this.wordsPerMinuteToMilliseconds(doc.wordsPerMinute);
+    return interval(wordsPerMinute).pipe(tap(period => this.store.dispatch(new RendererTick(period))));
   }
 
 }
