@@ -29,6 +29,7 @@ import { DocumentComponent } from './component/document';
 import { DocumentListItemComponent } from './component/document-list-item';
 import { HomeComponent } from './component/home';
 import { NavItemComponent } from './component/nav-item';
+import { ReaderComponent } from './component/reader';
 import { SettingsComponent } from './component/settings';
 import { TapIconComponent } from './component/tap-icon';
 import { TextInputComponent } from './component/text-input';
@@ -48,6 +49,7 @@ import { StorageState } from './storage';
     DocumentListItemComponent,
     NavItemComponent,
     ConfirmationDialogueComponent,
+    ReaderComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,14 +6,14 @@
     <mat-divider></mat-divider>
     <nav class="app-component__footer__items">
       <app-nav-item [fxFlex]="tabButtonWidth" [link]="['/', 'home']" matIcon="home"></app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [fxFlex]="tabButtonWidth"
-                    [link]="['/', 'reader', selectedDocument | async]" matIcon="auto_stories">
+      <app-nav-item [disabled]="hasSelectedDocument" [fxFlex]="tabButtonWidth" [link]="displayLink() | async"
+                    matIcon="auto_stories">
       </app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [fxFlex]="tabButtonWidth"
-                    [link]="['/', 'document', selectedDocument | async]" matIcon="article">
+      <app-nav-item [disabled]="hasSelectedDocument" [fxFlex]="tabButtonWidth" [link]="textLink() | async"
+                    matIcon="article">
       </app-nav-item>
-      <app-nav-item [disabled]="hasSelectedDocument" [fxFlex]="tabButtonWidth"
-                    [link]="['/', 'settings', selectedDocument | async]" matIcon="settings"></app-nav-item>
+      <app-nav-item [disabled]="hasSelectedDocument" [fxFlex]="tabButtonWidth" [link]="settingsLink() | async"
+                    matIcon="settings"></app-nav-item>
     </nav>
   </div>
 
