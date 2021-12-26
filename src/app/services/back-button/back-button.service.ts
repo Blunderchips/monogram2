@@ -26,11 +26,8 @@ export class BackButtonService implements OnDestroy {
     return this.subject.asObservable();
   }
 
-  async ngOnDestroy(): Promise<void> {
+  ngOnDestroy(): void {
     this.subject.complete();
-    if (this.listener) {
-      await this.listener.remove();
-    }
   }
 
 }
