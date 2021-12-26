@@ -4,6 +4,7 @@ import { App } from '@capacitor/app';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Select, Store } from '@ngxs/store';
 import { map, Observable } from 'rxjs';
+import { DocumentNavigationService } from './services/document-navigation';
 import { SelectDocument, StorageState } from './storage';
 
 @UntilDestroy()
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private store: Store,
     private router: Router,
+    private documentNavigation: DocumentNavigationService,
   ) {
   }
 
@@ -58,6 +60,24 @@ export class AppComponent implements OnInit, OnDestroy {
     } else {
       return null;
     }
+  }
+
+  displayLink(): Observable<RouterLink> {
+    return this.selectedDocument.pipe(map(docId => {
+      return this.documentNavigation.documentDisplay(docId).link;
+    }));
+  }
+
+  textLink(): Observable<RouterLink> {
+    return this.selectedDocument.pipe(map(docId => {
+      return this.documentNavigation.documentText(docId).link;
+    }));
+  }
+
+  settingsLink(): Observable<RouterLink> {
+    return this.selectedDocument.pipe(map(docId => {
+      return this.documentNavigation.documentSettings(docId).link;
+    }));
   }
 
 }

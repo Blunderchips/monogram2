@@ -1,12 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { map, Observable } from 'rxjs';
 import { v4 as uuid4 } from 'uuid';
 import { DOCUMENT_SEARCH_FORM_STATE } from '../../forms';
 import { SetSearchFormPristine } from '../../forms/forms.actions';
-import { Documents, MnDocument, StorageState } from '../../storage';
+import { DocumentNavigationService } from '../../services/document-navigation';
+import { Documents, StorageState } from '../../storage';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +31,7 @@ export class HomeComponent {
     search: new FormControl(),
   });
 
-  constructor(private router: Router, private store: Store) {
+  constructor(private store: Store, private documentNavigation: DocumentNavigationService) {
   }
 
   get searchFormName(): string {
@@ -48,7 +48,7 @@ export class HomeComponent {
   }
 
   generateNewDocumentId(): Promise<boolean> {
-    return this.router.navigateByUrl(`/document/${uuid4()}`); // todo try/catch exception
+    return this.documentNavigation.documentText(uuid4()).navigate();
   }
 
   /**

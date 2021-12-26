@@ -3,11 +3,6 @@ import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
 
-/**
- * Angular router link path.
- */
-export type RouterLink = Array<any> | null;
-
 // todo: null checks on inputs
 
 @Component({
@@ -43,11 +38,11 @@ export class NavItemComponent {
     if (!this.link) {
       return false; // a null link cannot be active
     }
-    return this.router.url.includes(this.link[1]);
+    return this.router.url.includes(this.link[2]);
   }
 
-  get colour(): ThemePalette | null {
-    return this.active ? 'primary' : null;
+  get colour(): ThemePalette {
+    return this.active ? 'primary' : undefined;
   }
 
 }

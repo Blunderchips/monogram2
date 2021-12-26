@@ -25,15 +25,15 @@ export class AppRoutingModule {
       component: HomeComponent,
     },
     {
-      path: 'document/:id',
+      path: ':id/document',
       component: DocumentComponent,
     },
     {
-      path: 'settings/:id',
+      path: ':id/settings',
       component: SettingsComponent,
     },
     {
-      path: 'reader/:id',
+      path: ':id/reader',
       component: DisplayComponent,
     },
   ];
