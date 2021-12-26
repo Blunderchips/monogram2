@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DisplayComponent } from './component/display';
 import { DocumentComponent } from './component/document';
 import { HomeComponent } from './component/home';
-import { DisplayComponent } from './component/display';
+import { ReaderComponent } from './component/reader';
 import { SettingsComponent } from './component/settings';
 
 @NgModule({
@@ -25,16 +26,22 @@ export class AppRoutingModule {
       component: HomeComponent,
     },
     {
-      path: ':id/document',
-      component: DocumentComponent,
-    },
-    {
-      path: ':id/settings',
-      component: SettingsComponent,
-    },
-    {
-      path: ':id/reader',
-      component: DisplayComponent,
+      path: 'reader',
+      component: ReaderComponent,
+      children: [
+        {
+          path: ':id/document',
+          component: DocumentComponent,
+        },
+        {
+          path: ':id/settings',
+          component: SettingsComponent,
+        },
+        {
+          path: ':id/display',
+          component: DisplayComponent,
+        },
+      ],
     },
   ];
 }

@@ -38,7 +38,7 @@ export class NavItemComponent {
     if (!this.link) {
       return false; // a null link cannot be active
     }
-    return this.router.url.includes(this.link[2]);
+    return this.router.url.includes(this.link[3]); // fixme
   }
 
   get colour(): ThemePalette {

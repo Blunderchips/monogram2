@@ -19,15 +19,15 @@ export class DocumentNavigationService {
   }
 
   documentDisplay(docId: UUID | null): NavigationLink {
-    return new NavigationLink(['/', docId, 'reader'], this.router);
+    return new NavigationLink(['/', 'reader', docId, 'display'], this.router);
   }
 
   documentText(docId: UUID | null): NavigationLink {
-    return new NavigationLink(['/', docId, 'document'], this.router);
+    return new NavigationLink(['/', 'reader', docId, 'document'], this.router);
   }
 
   documentSettings(docId: UUID | null): NavigationLink {
-    return new NavigationLink(['/', docId, 'settings'], this.router);
+    return new NavigationLink(['/', 'reader', docId, 'settings'], this.router);
   }
 
 }
