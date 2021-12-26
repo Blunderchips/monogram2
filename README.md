@@ -2,9 +2,7 @@
 
 > Rapid serial visual presentation (RSVP) speed-reader
 
-[![Lint Angular app](https://github.com/Blunderchips/monogram2/actions/workflows/lint.yml/badge.svg)](https://github.com/Blunderchips/monogram2/actions/workflows/lint.yml)
-[![Test Angular app](https://github.com/Blunderchips/monogram2/actions/workflows/test.yml/badge.svg)](https://github.com/Blunderchips/monogram2/actions/workflows/test.yml)
-[![Build Angular app](https://github.com/Blunderchips/monogram2/actions/workflows/build.yml/badge.svg)](https://github.com/Blunderchips/monogram2/actions/workflows/build.yml)
+[![Build & Test app](https://github.com/Blunderchips/monogram2/actions/workflows/node.js.yml/badge.svg)](https://github.com/Blunderchips/monogram2/actions/workflows/node.js.yml)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
