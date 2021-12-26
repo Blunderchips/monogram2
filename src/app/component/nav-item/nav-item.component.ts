@@ -46,8 +46,8 @@ export class NavItemComponent {
     return this.router.url.includes(this.link[1]);
   }
 
-  get colour(): ThemePalette | null {
-    return this.active ? 'primary' : null;
+  get colour(): ThemePalette {
+    return this.active ? 'primary' : undefined;
   }
 
 }
