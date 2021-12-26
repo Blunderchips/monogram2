@@ -65,10 +65,10 @@ describe('NavItemComponent', () => {
       fixture.detectChanges();
       expect(component.colour).toBe('primary');
     });
-    it('should return "null" when the link is not active', async () => {
+    it('should return "undefined" when the link is not active', async () => {
       await docNav.documentSettings(uuid4()).navigate();
       fixture.detectChanges();
-      expect(component.colour).toBeNull();
+      expect(component.colour).toBeUndefined();
     });
   });
 
