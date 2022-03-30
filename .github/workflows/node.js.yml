@@ -32,7 +32,7 @@ jobs:
 
       # https://github.com/actions/cache/blob/main/examples.md#node---yarn
       - name: yarn caching
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -42,7 +42,7 @@ jobs:
 
       # https://github.com/actions/cache/blob/main/examples.md#java---gradle
       - name: gradle caching
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
@@ -97,7 +97,7 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       # https://github.com/actions/cache/blob/main/examples.md#node---yarn
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -130,7 +130,7 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       # https://github.com/actions/cache/blob/main/examples.md#node---yarn
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
