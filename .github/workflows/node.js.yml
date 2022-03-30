@@ -71,7 +71,7 @@ jobs:
         working-directory: android
 
       - name: Update build artifactes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Android APK (debug)
           path: android/app/build/outputs/apk/debug/app-debug.apk
