@@ -1,4 +1,4 @@
-# monogram2
+# monogram: RSVP speed-reader
 
 > Rapid serial visual presentation (RSVP) speed-reader
 
