@@ -1289,10 +1289,10 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@capacitor/android@3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.4.3.tgz#1bfaa5bbe83872f7ba5c7d7bd38b54a47827124b"
-  integrity sha512-G/6+mbOde9LMWl5KvA5rB/xEQF05sKrQFMBwo8y3C8pYF+axtcrS0Dgze9rOB7nCjH4NXv/bLw58E9+q8/sQUA==
+"@capacitor/android@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.5.0.tgz#fc80297512cd66690a000edf22e8cd9177f05459"
+  integrity sha512-1SiTMMdd+urvDRrSLDmrFUU9Ldm8B2mUzVNvx8u1zgagZVPNQLoMY4WX8EkpPjt4+D6YIoBjdqb72LID9Iip6A==
 
 "@capacitor/angular@2.0.3":
   version "2.0.3"
@@ -1301,10 +1301,10 @@
   dependencies:
     jsonc-parser "^3.0.0"
 
-"@capacitor/cli@3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-3.4.3.tgz#15a14cbd9574980da5f9f04b6ce8623455784c6e"
-  integrity sha512-mu2pGoIh/OapMzWwXGXUlOmapXthW9XcHGERpZxNE45aBEYC9eTJWmbcXVlJuyx/9GFnnV+pXjGl3i0grci/Zw==
+"@capacitor/cli@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-3.5.0.tgz#69e0334b45822feff7888c64ad493a01ee87f5a9"
+  integrity sha512-URRAfCbrXufaxRCsDR68m0H3PPndyd4UyfhF4Y+DM5GI1i+0a1SlDYx2s/Ik0ttUFuKc+StwtlmR9Bt5sYNPtQ==
   dependencies:
     "@ionic/cli-framework-output" "^2.2.1"
     "@ionic/utils-fs" "^3.1.5"
@@ -1323,10 +1323,10 @@
     tslib "^2.1.0"
     xml2js "^0.4.23"
 
-"@capacitor/core@3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.4.3.tgz#3cf343b7035f1f6f9b73854dfb828600cd8a5e07"
-  integrity sha512-drfu0IiDMyeJtL4QALQgNFqdgN19DZJkbKh945eXyK44Sk2YkFXUs7Ewq1ZlVI30QF79mHGuM13oZeki0gv5Tw==
+"@capacitor/core@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.5.0.tgz#1b508e42b263816603e986557d6b9c5d64876164"
+  integrity sha512-+CFSG+CztpFIir9gGqNEtAYuf6OWryQ8dojXoeozAkoz3mKvyFfcEfvLVPo/pw/B4zHIlNnJLHne6vbjAFbDKQ==
   dependencies:
     tslib "^2.1.0"
 
