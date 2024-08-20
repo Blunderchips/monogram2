@@ -31,7 +31,7 @@
     "@ngxs/router-plugin": "3.7.4",
     "@ngxs/storage-plugin": "3.7.4",
     "@ngxs/store": "3.7.4",
-    "dayjs": "1.11.1",
+    "dayjs": "1.11.13",
     "lodash-es": "4.17.21",
     "ngx-scrollbar": "9.0.2",
     "ngxs-reset-plugin": "2.0.0",
