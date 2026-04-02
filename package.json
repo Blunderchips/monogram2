@@ -32,7 +32,7 @@
     "@ngxs/storage-plugin": "3.7.4",
     "@ngxs/store": "3.7.4",
     "dayjs": "1.11.1",
-    "lodash-es": "4.17.21",
+    "lodash-es": "4.18.1",
     "ngx-scrollbar": "9.0.2",
     "ngxs-reset-plugin": "2.0.0",
     "rxjs": "7.5.5",
